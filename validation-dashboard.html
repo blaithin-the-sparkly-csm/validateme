@@ -22,20 +22,14 @@
 }
 html,body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.5;min-height:100vh}
 a{color:var(--green);text-decoration:none}
-
-/* Badge */
 .labs-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--green);border:1px solid rgba(0,229,122,.3);border-radius:99px;padding:4px 12px;animation:pulse-border 3s ease-in-out infinite}
 @keyframes pulse-border{0%,100%{border-color:rgba(0,229,122,.3);box-shadow:0 0 0 0 rgba(0,229,122,0)}50%{border-color:rgba(0,229,122,.6);box-shadow:0 0 12px 0 rgba(0,229,122,.15)}}
 .labs-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-dot 3s ease-in-out infinite}
 @keyframes pulse-dot{0%,100%{opacity:.5}50%{opacity:1}}
-
-/* Layout */
 .shell{max-width:1100px;margin:0 auto;padding:20px 24px}
 header{display:flex;align-items:center;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:24px;flex-wrap:wrap}
 header h1{font-size:18px;font-weight:600;flex:1;min-width:200px}
 .header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-
-/* Buttons */
 .btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:13px;font-weight:500;border:1px solid var(--border);border-radius:var(--radius);padding:8px 16px;background:transparent;color:var(--text2);cursor:pointer;transition:all .15s}
 .btn:hover{border-color:var(--text3);color:var(--text);background:var(--surface)}
 .btn:active{transform:scale(.98)}
@@ -43,24 +37,25 @@ header h1{font-size:18px;font-weight:600;flex:1;min-width:200px}
 .btn-primary:hover{background:var(--green-dim);border-color:var(--green-dim);color:var(--bg)}
 .btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
 .btn-sm{padding:5px 10px;font-size:12px}
-.btn-icon{padding:8px;width:36px;height:36px;justify-content:center}
-
-/* Metrics strip */
-.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
+.btn-danger{background:transparent;color:var(--red);border-color:var(--red)}
+.btn-danger:hover{background:var(--red-bg);color:var(--red)}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px}
 .metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px}
 .metric-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
 .metric-val{font-size:22px;font-weight:700}
 .metric-sub{font-size:11px;color:var(--text3);margin-top:2px}
-
-/* Cards */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}
 .card-header{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:13px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
-
-/* Main grid */
+.card-header .spacer{flex:1}
 .main-grid{display:grid;grid-template-columns:1fr 280px;gap:16px;margin-bottom:16px}
 @media(max-width:800px){.main-grid{grid-template-columns:1fr}}
-
-/* Heatmap rows */
+/* Filters */
+.filter-bar{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+.filter-select{font-family:var(--font);font-size:12px;font-weight:500;padding:6px 28px 6px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234A6A8F'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;outline:none;min-width:140px}
+.filter-select:focus{border-color:var(--green)}
+.filter-select option{background:var(--surface);color:var(--text)}
+.filter-count{font-size:11px;color:var(--text3)}
+/* Heatmap */
 .heatmap-header{display:flex;align-items:center;gap:8px;padding:0 0 10px;border-bottom:1px solid var(--border);margin-bottom:4px;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.3px}
 .heatmap-header .h-cat{flex:1}
 .heatmap-header .h-bar{width:200px;text-align:center}
@@ -74,58 +69,52 @@ header h1{font-size:18px;font-weight:600;flex:1;min-width:200px}
 .h-bar{width:200px;display:flex;gap:1px;height:20px;border-radius:3px;overflow:hidden;flex-shrink:0}
 .h-seg{height:100%;min-width:2px;transition:flex .4s}
 .h-count{width:50px;text-align:right;font-size:13px;font-weight:600;font-family:var(--mono)}
-
-/* Sidebar error type bars */
 .etype-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;font-size:12px}
 .etype-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
 .etype-name{flex:1;color:var(--text2)}
 .etype-count{font-weight:600;font-family:var(--mono)}
 .etype-bar{height:6px;border-radius:3px;margin:0 0 12px 16px;background:var(--surface2)}
 .etype-fill{height:100%;border-radius:3px;transition:width .6s}
-
-/* Attribute leaderboard */
 .attr-leader{display:flex;justify-content:space-between;padding:4px 0;font-size:12px;border-bottom:1px solid rgba(30,58,95,.3)}
 .attr-leader:last-child{border-bottom:none}
 .attr-leader .a-name{color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;margin-right:8px}
 .attr-leader .a-count{font-weight:600;font-family:var(--mono);flex-shrink:0}
-
-/* Detail panel */
+/* Detail + fixes panels */
 .detail-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}
 .detail-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
 .detail-title{font-size:16px;font-weight:600}
 .detail-badge{font-size:11px;font-weight:600;color:var(--red);background:var(--red-bg);padding:4px 12px;border-radius:99px}
 .detail-sub{font-size:12px;color:var(--text3);margin-top:2px}
-
-/* Detail table */
 .dtable{width:100%;border-collapse:collapse;font-size:13px}
 .dtable th{text-align:left;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.3px;padding:10px 12px;border-bottom:1px solid var(--border)}
 .dtable td{padding:10px 12px;border-bottom:1px solid rgba(30,58,95,.3)}
 .dtable tr:last-child td{border-bottom:none}
 .dtable tr:hover td{background:rgba(0,229,122,.02)}
 .attr-code{font-family:var(--mono);font-size:11px;background:var(--surface2);padding:2px 8px;border-radius:4px}
-.kind-CLA{color:var(--red)}
-.kind-Attribute{color:var(--amber)}
-.kind-VLA{color:var(--blue)}
-.kind-Compound{color:var(--purple)}
-.kind-Dictionary{color:var(--gray)}
-.vtype-MISSING{color:var(--red)}
-.vtype-INVALID{color:var(--amber)}
-
+.kind-CLA{color:var(--red)}.kind-Attribute{color:var(--amber)}.kind-VLA{color:var(--blue)}.kind-Compound{color:var(--purple)}.kind-Dictionary{color:var(--gray)}
+.vtype-MISSING{color:var(--red)}.vtype-INVALID{color:var(--amber)}
+.cta-area{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);flex-wrap:wrap}
+.cta-hint{font-size:11px;color:var(--text3);flex:1;min-width:200px}
+/* Suggested fixes */
+.fix-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px;display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.fix-icon{width:32px;height:32px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.fix-icon.auto{background:var(--green-bg);color:var(--green)}
+.fix-icon.manual{background:var(--amber-bg);color:var(--amber)}
+.fix-body{flex:1;min-width:200px}
+.fix-title{font-size:13px;font-weight:600;margin-bottom:2px}
+.fix-desc{font-size:12px;color:var(--text2);margin-bottom:6px}
+.fix-meta{font-size:11px;color:var(--text3)}
+.fix-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.fix-progress{margin-top:8px;font-size:11px;color:var(--text3)}
+.fix-progress .done{color:var(--green)}
+.fix-progress .fail{color:var(--red)}
 /* Progress */
 .progress-bar{height:4px;background:var(--surface2);border-radius:2px;overflow:hidden;margin:8px 0}
 .progress-fill{height:100%;background:var(--green);border-radius:2px;transition:width .3s}
 .scan-status{font-size:12px;color:var(--text3)}
-
-/* Column setup action area */
-.cta-area{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);flex-wrap:wrap}
-.cta-hint{font-size:11px;color:var(--text3);flex:1;min-width:200px}
-
-/* Toast */
 .toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1px solid var(--green);border-radius:var(--radius);padding:12px 20px;font-size:13px;color:var(--green);transform:translateY(100px);opacity:0;transition:all .3s;z-index:999;max-width:360px}
 .toast.show{transform:translateY(0);opacity:1}
 .toast.error{border-color:var(--red);color:var(--red)}
-
-/* Settings modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:900;display:none;align-items:center;justify-content:center}
 .modal-overlay.open{display:flex}
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;width:420px;max-width:90vw}
@@ -135,27 +124,17 @@ header h1{font-size:18px;font-weight:600;flex:1;min-width:200px}
 .field input{width:100%;font-family:var(--mono);font-size:13px;padding:8px 12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);outline:none}
 .field input:focus{border-color:var(--green)}
 .modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
-
-/* Empty state */
 .empty{text-align:center;padding:60px 20px;color:var(--text3)}
 .empty h3{font-size:16px;font-weight:600;color:var(--text2);margin-bottom:8px}
 .empty p{font-size:13px;max-width:400px;margin:0 auto 20px}
-
-/* Scan spinner */
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* Hidden */
 .hidden{display:none!important}
-
-/* Footer */
 footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
 </style>
 </head>
 <body>
 <div class="shell">
-
-  <!-- Header -->
   <header>
     <h1>⚠ Validation error patterns</h1>
     <div class="header-actions">
@@ -164,8 +143,6 @@ footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
       <button class="btn btn-primary" id="scanBtn" onclick="startScan()">Scan catalog</button>
     </div>
   </header>
-
-  <!-- Scan progress -->
   <div id="scanProgress" class="hidden" style="margin-bottom:20px">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
       <span class="spinner" id="scanSpinner"></span>
@@ -173,32 +150,12 @@ footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
     </div>
     <div class="progress-bar"><div class="progress-fill" id="scanFill" style="width:0%"></div></div>
   </div>
-
-  <!-- Metrics strip -->
   <div class="metrics hidden" id="metricsStrip">
-    <div class="metric">
-      <div class="metric-label">Total errors</div>
-      <div class="metric-val" id="mTotalErrors" style="color:var(--red)">—</div>
-      <div class="metric-sub" id="mTotalProducts"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Categories affected</div>
-      <div class="metric-val" id="mCatsAffected">—</div>
-      <div class="metric-sub" id="mCatsTotal"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Top error kind</div>
-      <div class="metric-val" id="mTopKind" style="font-size:15px">—</div>
-      <div class="metric-sub" id="mTopKindSub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Top failing attribute</div>
-      <div class="metric-val" id="mTopAttr" style="font-size:15px">—</div>
-      <div class="metric-sub" id="mTopAttrSub"></div>
-    </div>
+    <div class="metric"><div class="metric-label">Total errors</div><div class="metric-val" id="mTotalErrors" style="color:var(--red)">—</div><div class="metric-sub" id="mTotalProducts"></div></div>
+    <div class="metric"><div class="metric-label">Categories affected</div><div class="metric-val" id="mCatsAffected">—</div><div class="metric-sub" id="mCatsTotal"></div></div>
+    <div class="metric"><div class="metric-label">Top error kind</div><div class="metric-val" id="mTopKind" style="font-size:15px">—</div><div class="metric-sub" id="mTopKindSub"></div></div>
+    <div class="metric"><div class="metric-label">Top failing attribute</div><div class="metric-val" id="mTopAttr" style="font-size:15px">—</div><div class="metric-sub" id="mTopAttrSub"></div></div>
   </div>
-
-  <!-- Main content area -->
   <div id="mainContent">
     <div class="empty" id="emptyState">
       <h3>No scan results yet</h3>
@@ -206,11 +163,14 @@ footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
       <button class="btn" onclick="openSettings()">⚙ Settings</button>
     </div>
   </div>
-
-  <!-- Results grid (hidden until scan) -->
   <div class="main-grid hidden" id="resultsGrid">
     <div class="card" style="padding-bottom:8px">
       <div class="card-header">▤ Errors by subcategory</div>
+      <div class="filter-bar">
+        <select class="filter-select" id="filterParent" onchange="onFilterChange()"><option value="__all">All categories</option></select>
+        <select class="filter-select" id="filterSub" onchange="onFilterChange()"><option value="__all">All subcategories</option></select>
+        <span class="filter-count" id="filterCount"></span>
+      </div>
       <div class="heatmap-header">
         <span class="h-cat">Category</span>
         <span class="h-bar">Error composition</span>
@@ -218,64 +178,43 @@ footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
       </div>
       <div id="heatmapBody"></div>
     </div>
-
     <div>
-      <div class="card">
-        <div class="card-header">◧ Error kinds</div>
-        <div id="kindBreakdown"></div>
-      </div>
-      <div class="card">
-        <div class="card-header">⬡ Top failing attributes</div>
-        <div id="attrLeaderboard"></div>
-      </div>
+      <div class="card"><div class="card-header">◧ Error kinds</div><div id="kindBreakdown"></div></div>
+      <div class="card"><div class="card-header">⬡ Top failing attributes</div><div id="attrLeaderboard"></div></div>
     </div>
   </div>
-
-  <!-- Detail panel (hidden until category click) -->
   <div class="detail-panel hidden" id="detailPanel">
     <div class="detail-header">
-      <div>
-        <div class="detail-title" id="detailTitle">—</div>
-        <div class="detail-sub" id="detailSub">—</div>
-      </div>
+      <div><div class="detail-title" id="detailTitle">—</div><div class="detail-sub" id="detailSub">—</div></div>
       <div class="detail-badge" id="detailBadge">—</div>
     </div>
-    <table class="dtable">
-      <thead>
-        <tr>
-          <th>Attribute</th>
-          <th>Error kind</th>
-          <th>Validation type</th>
-          <th style="text-align:right">Products</th>
-        </tr>
-      </thead>
-      <tbody id="detailBody"></tbody>
-    </table>
-    <div class="cta-area" id="ctaArea">
+    <table class="dtable"><thead><tr><th>Attribute</th><th>Error kind</th><th>Validation type</th><th style="text-align:right">Products</th></tr></thead><tbody id="detailBody"></tbody></table>
+    <div class="cta-area">
       <button class="btn btn-primary" id="ctaBtn" onclick="proposeColumnSetup()">⊞ Create fix-it column setup</button>
       <div class="cta-hint" id="ctaHint">—</div>
     </div>
   </div>
-
-  <footer>Built on the Bluestone MCP · <a href="https://labs.bluestonepim.com" target="_blank">labs.bluestonepim.com</a></footer>
+  <!-- Suggested fixes -->
+  <div class="detail-panel hidden" id="fixesPanel">
+    <div class="detail-header">
+      <div><div class="detail-title">⚡ Suggested fixes</div><div class="detail-sub" id="fixesSub">—</div></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-sm" id="analyzeBtn" onclick="analyzeFixes()">🔍 Analyze</button>
+        <button class="btn btn-sm btn-primary hidden" id="execAllBtn" onclick="executeAllFixes()">▶ Execute all auto-fixes</button>
+      </div>
+    </div>
+    <div id="fixesBody">
+      <div style="text-align:center;padding:20px;color:var(--text3);font-size:13px">Click <strong>Analyze</strong> to sample products and identify auto-fixable errors in this category.</div>
+    </div>
+  </div>
+  <footer>Built on the Bluestone MCP · <a href="https://labs.bluestonepim.com" target="_blank">labs.bluestonepim.com</a> · Live mode — writes to Bluestone PIM LABS via MCP</footer>
 </div>
-
-<!-- Settings modal -->
 <div class="modal-overlay" id="settingsModal">
   <div class="modal">
     <h2>⚙ Connection settings</h2>
-    <div class="field">
-      <label>Worker URL</label>
-      <input id="cfgWorkerUrl" placeholder="https://your-worker.your-subdomain.workers.dev">
-    </div>
-    <div class="field">
-      <label>Demo secret</label>
-      <input id="cfgSecret" type="password" placeholder="••••••••">
-    </div>
-    <div class="field">
-      <label>Column setup owner email</label>
-      <input id="cfgOwnerEmail" placeholder="user@company.com">
-    </div>
+    <div class="field"><label>Worker URL</label><input id="cfgWorkerUrl" placeholder="https://your-worker.your-subdomain.workers.dev"></div>
+    <div class="field"><label>Demo secret</label><input id="cfgSecret" type="password" placeholder="••••••••"></div>
+    <div class="field"><label>Column setup owner email</label><input id="cfgOwnerEmail" placeholder="user@company.com"></div>
     <div class="modal-actions">
       <button class="btn" onclick="closeSettings()">Cancel</button>
       <button class="btn" onclick="testConnection()">Test</button>
@@ -283,26 +222,21 @@ footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
     </div>
   </div>
 </div>
-
-<!-- Toast -->
 <div class="toast" id="toast"></div>
-
 <script>
-// ─── Config ──────────────────────────────────────────────────────────
 const CATALOG_ID = '69f1bb2954e43fd1f8a00891';
 const CATALOG_NAME = 'Paradigm Workflow TEST';
+const KIND_COLORS = { CLA:'var(--red)', Attribute:'var(--amber)', VLA:'var(--blue)', Compound:'var(--purple)', Dictionary:'var(--gray)', Other:'var(--text3)' };
 
-// ─── State ───────────────────────────────────────────────────────────
-let scanData = null;          // { categories: [], totals: {} }
+let scanData = null;
 let selectedCatId = null;
+let categoryTree = [];       // raw tree from MCP
+let currentFixes = [];        // analyzed fix suggestions for selected category
+let activeFilter = { parent: '__all', sub: '__all' };
 
 // ─── Settings ────────────────────────────────────────────────────────
 function loadCfg() {
-  return {
-    workerUrl: localStorage.getItem('bs_worker_url') || '',
-    secret: localStorage.getItem('bs_secret') || '',
-    ownerEmail: localStorage.getItem('bs_owner_email') || ''
-  };
+  return { workerUrl: localStorage.getItem('bs_worker_url')||'', secret: localStorage.getItem('bs_secret')||'', ownerEmail: localStorage.getItem('bs_owner_email')||'' };
 }
 function openSettings() {
   const c = loadCfg();
@@ -316,11 +250,10 @@ function saveSettings() {
   localStorage.setItem('bs_worker_url', document.getElementById('cfgWorkerUrl').value.replace(/\/$/,''));
   localStorage.setItem('bs_secret', document.getElementById('cfgSecret').value);
   localStorage.setItem('bs_owner_email', document.getElementById('cfgOwnerEmail').value);
-  closeSettings();
-  toast('Settings saved');
+  closeSettings(); toast('Settings saved');
 }
 
-// ─── MCP call helper ─────────────────────────────────────────────────
+// ─── MCP ─────────────────────────────────────────────────────────────
 async function mcpCall(tool, args = {}) {
   const cfg = loadCfg();
   if (!cfg.workerUrl || !cfg.secret) throw new Error('Configure Worker URL and secret in Settings');
@@ -329,278 +262,241 @@ async function mcpCall(tool, args = {}) {
     headers: { 'Content-Type': 'application/json', 'X-Demo-Secret': cfg.secret },
     body: JSON.stringify({ tool, args })
   });
-  if (!res.ok) {
-    const t = await res.text().catch(() => '');
-    throw new Error(`MCP ${res.status}: ${t.slice(0,200)}`);
-  }
-  const json = await res.json();
-  const text = extractMcpText(json);
-  return extractJson(text);
+  if (!res.ok) { const t = await res.text().catch(()=>''); throw new Error(`MCP ${res.status}: ${t.slice(0,200)}`); }
+  return extractJson(extractMcpText(await res.json()));
 }
-
-function extractMcpText(json) {
-  if (json?.result?.content) {
-    return json.result.content.filter(c => c.type === 'text').map(c => c.text).join('\n');
-  }
-  if (json?.content) {
-    return json.content.filter(c => c.type === 'text').map(c => c.text).join('\n');
-  }
-  return JSON.stringify(json);
+function extractMcpText(j) {
+  if (j?.result?.content) return j.result.content.filter(c=>c.type==='text').map(c=>c.text).join('\n');
+  if (j?.content) return j.content.filter(c=>c.type==='text').map(c=>c.text).join('\n');
+  return JSON.stringify(j);
 }
-
 function extractJson(text) {
   try { return JSON.parse(text); } catch {}
-  const start = text.search(/[\{\[]/);
-  if (start === -1) return text;
-  const sub = text.slice(start);
-  try { return JSON.parse(sub); } catch { return text; }
+  const s = text.search(/[\{\[]/);
+  if (s === -1) return text;
+  try { return JSON.parse(text.slice(s)); } catch { return text; }
 }
-
-// ─── Toast ───────────────────────────────────────────────────────────
-function toast(msg, isError = false) {
+function toast(msg, isError=false) {
   const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.className = 'toast show' + (isError ? ' error' : '');
-  clearTimeout(el._t);
-  el._t = setTimeout(() => el.className = 'toast', 3500);
+  el.textContent = msg; el.className = 'toast show' + (isError?' error':'');
+  clearTimeout(el._t); el._t = setTimeout(()=> el.className='toast', 3500);
 }
-
-// ─── Test connection ─────────────────────────────────────────────────
 async function testConnection() {
-  try {
-    await mcpCall('list_catalogs', {});
-    toast('Connection OK ✓');
-  } catch (e) {
-    toast('Connection failed: ' + e.message, true);
-  }
+  try { await mcpCall('list_catalogs',{}); toast('Connection OK ✓'); } catch(e) { toast('Connection failed: '+e.message,true); }
 }
 
 // ─── SCAN ────────────────────────────────────────────────────────────
 async function startScan() {
   const btn = document.getElementById('scanBtn');
-  btn.disabled = true;
-  btn.textContent = 'Scanning…';
+  btn.disabled = true; btn.textContent = 'Scanning…';
   document.getElementById('scanProgress').classList.remove('hidden');
   document.getElementById('emptyState').classList.add('hidden');
   updateScan('Fetching category tree…', 0);
 
   try {
-    // 1. Fetch category tree
     const tree = await mcpCall('list_category_tree', { catalogId: CATALOG_ID, catalogName: CATALOG_NAME, limit: 500 });
-    const categories = tree.categories || [];
-    const leafCats = categories.filter(c => c.depth >= 1);
+    categoryTree = tree.categories || [];
+    const leafCats = categoryTree.filter(c => c.depth >= 1);
 
-    // Build results accumulator
     const results = {
-      categories: {},   // catId → { name, path, parentName, totalErrors, products, issues: [] }
-      byKind: {},       // kind → count
-      byAttr: {},       // attrName → { count, defId }
-      byVtype: {},      // validationType → count
-      totalErrors: 0,
-      totalProducts: 0,
-      productsWithIssues: 0
+      categories: {},
+      byKind: {}, byAttr: {}, byVtype: {},
+      totalErrors: 0, totalProducts: 0, productsWithIssues: 0,
+      parentNames: new Set()
     };
 
-    const totalSteps = leafCats.length;
     let step = 0;
-
     for (const cat of leafCats) {
       step++;
-      updateScan(`Scanning ${cat.name} (${step}/${totalSteps})…`, (step / (totalSteps + 1)) * 100);
+      updateScan(`Scanning ${cat.name} (${step}/${leafCats.length})…`, (step/(leafCats.length+1))*100);
 
-      // Fetch products for this category
-      let allProducts = [];
-      let page = 1;
-      let hasMore = true;
+      let allProducts = [], page = 1, hasMore = true;
       while (hasMore) {
-        const pRes = await mcpCall('list_products_in_category', {
-          categoryId: cat.id,
-          categoryName: cat.name,
-          limit: 100,
-          page
-        });
-        const products = pRes.products || [];
-        allProducts = allProducts.concat(products);
-        hasMore = pRes.hasMore === true;
-        page++;
+        const pRes = await mcpCall('list_products_in_category', { categoryId: cat.id, categoryName: cat.name, limit: 100, page });
+        allProducts = allProducts.concat(pRes.products || []);
+        hasMore = pRes.hasMore === true; page++;
       }
+      if (!allProducts.length) continue;
 
-      if (allProducts.length === 0) continue;
+      const parentName = categoryTree.find(c => c.id === cat.parentId)?.name || '';
+      if (parentName) results.parentNames.add(parentName);
 
-      // Init category result
       results.categories[cat.id] = {
-        name: cat.name,
-        path: cat.path,
-        parentName: categories.find(c => c.id === cat.parentId)?.name || '',
-        totalErrors: 0,
-        productCount: allProducts.length,
-        issues: [],
-        attrBreakdown: {}   // attrName → { defId, kind, vtype, count }
+        name: cat.name, path: cat.path, depth: cat.depth, parentName,
+        parentId: cat.parentId || '',
+        totalErrors: 0, productCount: allProducts.length,
+        products: allProducts,           // keep for fix analysis
+        productIssues: {},               // productId → [issues]
+        issues: [], attrBreakdown: {}
       };
-
       results.totalProducts += allProducts.length;
 
-      // Batch validation checks (100 per call)
       const ids = allProducts.map(p => p.id);
       for (let i = 0; i < ids.length; i += 100) {
-        const batch = ids.slice(i, i + 100);
         try {
-          const vRes = await mcpCall('list_product_validation_issues', { productIds: batch });
-          const products = vRes.products || [];
-
-          for (const p of products) {
+          const vRes = await mcpCall('list_product_validation_issues', { productIds: ids.slice(i, i+100) });
+          for (const p of (vRes.products || [])) {
             if (p.issueCount > 0) results.productsWithIssues++;
+            results.categories[cat.id].productIssues[p.productId] = p.issues || [];
             for (const issue of (p.issues || [])) {
               results.totalErrors++;
               results.categories[cat.id].totalErrors++;
-
-              // By kind
-              const kind = issue.kind || 'Other';
-              results.byKind[kind] = (results.byKind[kind] || 0) + 1;
-
-              // By validation type
-              const vtype = issue.validationType || 'UNKNOWN';
-              results.byVtype[vtype] = (results.byVtype[vtype] || 0) + 1;
-
-              // By attribute
-              const attr = issue.attributeName || 'Unknown';
-              if (!results.byAttr[attr]) results.byAttr[attr] = { count: 0, defId: issue.definitionId };
+              const kind = issue.kind||'Other';
+              results.byKind[kind] = (results.byKind[kind]||0)+1;
+              const vtype = issue.validationType||'UNKNOWN';
+              results.byVtype[vtype] = (results.byVtype[vtype]||0)+1;
+              const attr = issue.attributeName||'Unknown';
+              if (!results.byAttr[attr]) results.byAttr[attr] = { count:0, defId:issue.definitionId };
               results.byAttr[attr].count++;
-
-              // Category-level breakdown
               const bKey = `${attr}||${kind}||${vtype}`;
               if (!results.categories[cat.id].attrBreakdown[bKey]) {
-                results.categories[cat.id].attrBreakdown[bKey] = {
-                  attrName: attr,
-                  defId: issue.definitionId,
-                  kind,
-                  vtype,
-                  count: 0
-                };
+                results.categories[cat.id].attrBreakdown[bKey] = { attrName:attr, defId:issue.definitionId, kind, vtype, count:0, productIds:[] };
               }
               results.categories[cat.id].attrBreakdown[bKey].count++;
-
+              results.categories[cat.id].attrBreakdown[bKey].productIds.push(p.productId);
               results.categories[cat.id].issues.push(issue);
             }
           }
-        } catch (e) {
-          console.warn('Validation batch failed for', cat.name, e);
-        }
+        } catch(e) { console.warn('Validation batch failed for', cat.name, e); }
       }
     }
 
     scanData = results;
     updateScan('Scan complete ✓', 100);
     document.getElementById('scanSpinner').style.display = 'none';
+    buildFilters();
     renderResults();
-
-  } catch (e) {
-    toast('Scan failed: ' + e.message, true);
+  } catch(e) {
+    toast('Scan failed: '+e.message, true);
     updateScan('Scan failed', 0);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Scan catalog';
-  }
+  } finally { btn.disabled = false; btn.textContent = 'Scan catalog'; }
 }
 
 function updateScan(msg, pct) {
   document.getElementById('scanStatus').textContent = msg;
-  document.getElementById('scanFill').style.width = Math.round(pct) + '%';
+  document.getElementById('scanFill').style.width = Math.round(pct)+'%';
+}
+
+// ─── FILTERS ─────────────────────────────────────────────────────────
+function buildFilters() {
+  if (!scanData) return;
+  const parentSel = document.getElementById('filterParent');
+  parentSel.innerHTML = '<option value="__all">All categories</option>';
+  for (const name of [...scanData.parentNames].sort()) {
+    parentSel.innerHTML += `<option value="${name}">${name}</option>`;
+  }
+}
+
+function onFilterChange() {
+  activeFilter.parent = document.getElementById('filterParent').value;
+  const subSel = document.getElementById('filterSub');
+
+  // Rebuild sub options based on parent
+  subSel.innerHTML = '<option value="__all">All subcategories</option>';
+  if (activeFilter.parent !== '__all') {
+    const subs = Object.values(scanData.categories).filter(c => c.parentName === activeFilter.parent && c.depth >= 2);
+    for (const s of subs.sort((a,b) => a.name.localeCompare(b.name))) {
+      subSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
+    }
+  }
+  activeFilter.sub = subSel.value;
+  renderResults();
+}
+
+function getFilteredCats() {
+  if (!scanData) return [];
+  return Object.entries(scanData.categories)
+    .map(([id, c]) => ({ id, ...c }))
+    .filter(c => {
+      if (activeFilter.parent !== '__all' && c.parentName !== activeFilter.parent) return false;
+      if (activeFilter.sub !== '__all' && c.name !== activeFilter.sub) return false;
+      return true;
+    })
+    .sort((a, b) => b.totalErrors - a.totalErrors);
 }
 
 // ─── RENDER ──────────────────────────────────────────────────────────
 function renderResults() {
   if (!scanData) return;
-  const d = scanData;
+
+  const filtered = getFilteredCats();
+  const totalErrors = filtered.reduce((s,c) => s+c.totalErrors, 0);
+  const totalProducts = filtered.reduce((s,c) => s+c.productCount, 0);
+  const catsWithErrors = filtered.filter(c => c.totalErrors > 0).length;
+
+  // Compute filtered kind + attr breakdowns
+  const fKind = {}, fAttr = {};
+  for (const cat of filtered) {
+    for (const issue of cat.issues) {
+      const k = issue.kind||'Other';
+      fKind[k] = (fKind[k]||0)+1;
+      const a = issue.attributeName||'Unknown';
+      if (!fAttr[a]) fAttr[a] = { count:0, defId:issue.definitionId };
+      fAttr[a].count++;
+    }
+  }
 
   // Metrics
   document.getElementById('metricsStrip').classList.remove('hidden');
-  document.getElementById('mTotalErrors').textContent = d.totalErrors.toLocaleString();
-  document.getElementById('mTotalProducts').textContent = `across ${d.productsWithIssues.toLocaleString()} products`;
+  document.getElementById('mTotalErrors').textContent = totalErrors.toLocaleString();
+  document.getElementById('mTotalProducts').textContent = `across ${totalProducts.toLocaleString()} products`;
+  document.getElementById('mCatsAffected').innerHTML = `${catsWithErrors} <span style="font-size:13px;color:var(--text3)">/ ${filtered.length}</span>`;
+  document.getElementById('mCatsTotal').textContent = filtered.length > 0 ? `${Math.round(catsWithErrors/filtered.length*100)}% of selection` : '';
 
-  const catsWithErrors = Object.values(d.categories).filter(c => c.totalErrors > 0).length;
-  const totalCats = Object.keys(d.categories).length;
-  document.getElementById('mCatsAffected').innerHTML = `${catsWithErrors} <span style="font-size:13px;color:var(--text3)">/ ${totalCats}</span>`;
-  document.getElementById('mCatsTotal').textContent = totalCats > 0 ? `${Math.round(catsWithErrors / totalCats * 100)}% of catalog` : '';
-
-  // Top kind
-  const kindEntries = Object.entries(d.byKind).sort((a, b) => b[1] - a[1]);
+  const kindEntries = Object.entries(fKind).sort((a,b) => b[1]-a[1]);
   if (kindEntries.length) {
     document.getElementById('mTopKind').textContent = kindEntries[0][0];
-    document.getElementById('mTopKindSub').textContent = `${kindEntries[0][1].toLocaleString()} errors (${d.totalErrors ? Math.round(kindEntries[0][1] / d.totalErrors * 100) : 0}%)`;
+    document.getElementById('mTopKindSub').textContent = `${kindEntries[0][1].toLocaleString()} errors (${totalErrors ? Math.round(kindEntries[0][1]/totalErrors*100) : 0}%)`;
   }
-
-  // Top attribute
-  const attrEntries = Object.entries(d.byAttr).sort((a, b) => b[1].count - a[1].count);
+  const attrEntries = Object.entries(fAttr).sort((a,b) => b[1].count - a[1].count);
   if (attrEntries.length) {
     document.getElementById('mTopAttr').textContent = attrEntries[0][0];
     document.getElementById('mTopAttrSub').textContent = `${attrEntries[0][1].count.toLocaleString()} products affected`;
   }
 
-  // Show results grid
   document.getElementById('resultsGrid').classList.remove('hidden');
+  document.getElementById('filterCount').textContent = `${filtered.length} categories · ${totalErrors} errors`;
 
-  // ─ Heatmap ─
-  const kindColors = { CLA: 'var(--red)', Attribute: 'var(--amber)', VLA: 'var(--blue)', Compound: 'var(--purple)', Dictionary: 'var(--gray)', Other: 'var(--text3)' };
-  const sortedCats = Object.entries(d.categories)
-    .map(([id, c]) => ({ id, ...c }))
-    .sort((a, b) => b.totalErrors - a.totalErrors);
-
+  // Heatmap
   const heatmapBody = document.getElementById('heatmapBody');
   heatmapBody.innerHTML = '';
-
-  for (const cat of sortedCats) {
-    // Build kind distribution for this category
+  for (const cat of filtered) {
     const catKinds = {};
-    for (const issue of cat.issues) {
-      const k = issue.kind || 'Other';
-      catKinds[k] = (catKinds[k] || 0) + 1;
-    }
-
+    for (const issue of cat.issues) { const k=issue.kind||'Other'; catKinds[k]=(catKinds[k]||0)+1; }
     const row = document.createElement('div');
-    row.className = 'heatmap-row';
+    row.className = 'heatmap-row' + (selectedCatId === cat.id ? ' selected' : '');
     row.dataset.catId = cat.id;
     row.onclick = () => selectCategory(cat.id);
-
     let barHtml = '';
-    for (const [kind, count] of Object.entries(catKinds).sort((a, b) => b[1] - a[1])) {
-      barHtml += `<div class="h-seg" style="flex:${count};background:${kindColors[kind] || 'var(--text3)'}" title="${kind}: ${count}"></div>`;
+    for (const [kind,count] of Object.entries(catKinds).sort((a,b)=>b[1]-a[1])) {
+      barHtml += `<div class="h-seg" style="flex:${count};background:${KIND_COLORS[kind]||'var(--text3)'}" title="${kind}: ${count}"></div>`;
     }
-
-    const parentLabel = cat.parentName ? `<span class="parent">${cat.parentName} ›</span>` : '';
-    row.innerHTML = `
-      <div class="h-cat">${parentLabel}${cat.name}</div>
-      <div class="h-bar">${cat.totalErrors > 0 ? barHtml : '<div style="flex:1;background:var(--surface2);height:100%;border-radius:3px"></div>'}</div>
-      <div class="h-count" style="color:${cat.totalErrors > 0 ? 'var(--text)' : 'var(--text3)'}">${cat.totalErrors}</div>
-    `;
+    const parentLabel = (activeFilter.parent === '__all' && cat.parentName) ? `<span class="parent">${cat.parentName} ›</span>` : '';
+    row.innerHTML = `<div class="h-cat">${parentLabel}${cat.name}</div><div class="h-bar">${cat.totalErrors>0?barHtml:'<div style="flex:1;background:var(--surface2);height:100%;border-radius:3px"></div>'}</div><div class="h-count" style="color:${cat.totalErrors>0?'var(--text)':'var(--text3)'}">${cat.totalErrors}</div>`;
     heatmapBody.appendChild(row);
   }
 
-  // ─ Kind breakdown sidebar ─
-  const kindDiv = document.getElementById('kindBreakdown');
-  kindDiv.innerHTML = '';
+  // Kind sidebar
+  const kindDiv = document.getElementById('kindBreakdown'); kindDiv.innerHTML = '';
   const maxKind = kindEntries.length ? kindEntries[0][1] : 1;
-  for (const [kind, count] of kindEntries) {
-    kindDiv.innerHTML += `
-      <div class="etype-row">
-        <div class="etype-dot" style="background:${kindColors[kind] || 'var(--text3)'}"></div>
-        <div class="etype-name">${kind}</div>
-        <div class="etype-count">${count.toLocaleString()}</div>
-      </div>
-      <div class="etype-bar"><div class="etype-fill" style="width:${Math.round(count/maxKind*100)}%;background:${kindColors[kind] || 'var(--text3)'}"></div></div>
-    `;
+  for (const [kind,count] of kindEntries) {
+    kindDiv.innerHTML += `<div class="etype-row"><div class="etype-dot" style="background:${KIND_COLORS[kind]||'var(--text3)'}"></div><div class="etype-name">${kind}</div><div class="etype-count">${count.toLocaleString()}</div></div><div class="etype-bar"><div class="etype-fill" style="width:${Math.round(count/maxKind*100)}%;background:${KIND_COLORS[kind]||'var(--text3)'}"></div></div>`;
   }
 
-  // ─ Attribute leaderboard ─
-  const attrDiv = document.getElementById('attrLeaderboard');
-  attrDiv.innerHTML = '';
-  for (const [name, data] of attrEntries.slice(0, 10)) {
+  // Attr leaderboard
+  const attrDiv = document.getElementById('attrLeaderboard'); attrDiv.innerHTML = '';
+  for (const [name,data] of attrEntries.slice(0,10)) {
     attrDiv.innerHTML += `<div class="attr-leader"><span class="a-name">${name}</span><span class="a-count">${data.count.toLocaleString()}</span></div>`;
   }
 
-  // Auto-select top category
-  if (sortedCats.length && sortedCats[0].totalErrors > 0) {
-    selectCategory(sortedCats[0].id);
+  // Re-select if category still visible
+  if (selectedCatId && filtered.some(c => c.id === selectedCatId)) {
+    selectCategory(selectedCatId);
+  } else if (filtered.length && filtered[0].totalErrors > 0) {
+    selectCategory(filtered[0].id);
+  } else {
+    document.getElementById('detailPanel').classList.add('hidden');
+    document.getElementById('fixesPanel').classList.add('hidden');
   }
 }
 
@@ -610,118 +506,241 @@ function selectCategory(catId) {
   const cat = scanData.categories[catId];
   if (!cat) return;
 
-  // Highlight row
-  document.querySelectorAll('.heatmap-row').forEach(r => {
-    r.classList.toggle('selected', r.dataset.catId === catId);
-  });
+  document.querySelectorAll('.heatmap-row').forEach(r => r.classList.toggle('selected', r.dataset.catId===catId));
 
-  // Show detail panel
   const panel = document.getElementById('detailPanel');
   panel.classList.remove('hidden');
-
   document.getElementById('detailTitle').textContent = cat.name;
   document.getElementById('detailSub').textContent = `${cat.totalErrors} errors across ${cat.productCount} products`;
-  const pctOfTotal = scanData.totalErrors ? Math.round(cat.totalErrors / scanData.totalErrors * 100) : 0;
+  const pctOfTotal = scanData.totalErrors ? Math.round(cat.totalErrors/scanData.totalErrors*100) : 0;
   document.getElementById('detailBadge').textContent = `${pctOfTotal}% of all errors`;
 
-  // Build detail table from attrBreakdown
-  const body = document.getElementById('detailBody');
-  body.innerHTML = '';
-  const breakdowns = Object.values(cat.attrBreakdown).sort((a, b) => b.count - a.count);
-
-  const defIds = new Set();
-  const attrNames = [];
-
+  const body = document.getElementById('detailBody'); body.innerHTML = '';
+  const breakdowns = Object.values(cat.attrBreakdown).sort((a,b)=>b.count-a.count);
+  const defIds = new Set(), attrNames = [];
   for (const b of breakdowns) {
-    const vtypeLabel = b.vtype.replace(/_/g, ' ').toLowerCase().replace(/^\w/, c => c.toUpperCase());
+    const vtypeLabel = b.vtype.replace(/_/g,' ').toLowerCase().replace(/^\w/, c=>c.toUpperCase());
     const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><span class="attr-code">${b.attrName}</span></td>
-      <td><span class="kind-${b.kind}">${b.kind}</span></td>
-      <td><span class="vtype-${b.vtype.startsWith('MISSING') ? 'MISSING' : 'INVALID'}">${vtypeLabel}</span></td>
-      <td style="text-align:right;font-weight:600;font-family:var(--mono)">${b.count}</td>
-    `;
+    tr.innerHTML = `<td><span class="attr-code">${b.attrName}</span></td><td><span class="kind-${b.kind}">${b.kind}</span></td><td><span class="vtype-${b.vtype.startsWith('MISSING')?'MISSING':'INVALID'}">${vtypeLabel}</span></td><td style="text-align:right;font-weight:600;font-family:var(--mono)">${b.count}</td>`;
     body.appendChild(tr);
-
     if (b.defId) defIds.add(b.defId);
     if (!attrNames.includes(b.attrName)) attrNames.push(b.attrName);
   }
 
-  // Update CTA
-  const ctaHint = document.getElementById('ctaHint');
-  if (attrNames.length) {
-    ctaHint.textContent = `Creates a column setup with ${attrNames.join(', ')} — apply it in Bluestone PIM to isolate failing attributes.`;
-  } else {
-    ctaHint.textContent = 'No failing attributes to build a column setup from.';
-  }
+  document.getElementById('ctaHint').textContent = attrNames.length
+    ? `Creates a column setup with ${attrNames.join(', ')} — apply in Bluestone PIM to isolate failing attributes.`
+    : 'No failing attributes to build a column setup from.';
 
-  // Store defIds for column setup
   panel.dataset.defIds = JSON.stringify([...defIds]);
   panel.dataset.attrNames = JSON.stringify(attrNames);
   panel.dataset.catName = cat.name;
+
+  // Show fixes panel, reset state
+  const fixesPanel = document.getElementById('fixesPanel');
+  fixesPanel.classList.remove('hidden');
+  document.getElementById('fixesSub').textContent = `${cat.name} — ${breakdowns.length} error patterns`;
+  document.getElementById('fixesBody').innerHTML = '<div style="text-align:center;padding:20px;color:var(--text3);font-size:13px">Click <strong>Analyze</strong> to sample products and identify auto-fixable errors in this category.</div>';
+  document.getElementById('analyzeBtn').classList.remove('hidden');
+  document.getElementById('analyzeBtn').disabled = false;
+  document.getElementById('analyzeBtn').textContent = '🔍 Analyze';
+  document.getElementById('execAllBtn').classList.add('hidden');
+  currentFixes = [];
+}
+
+// ─── ANALYZE FIXES ───────────────────────────────────────────────────
+async function analyzeFixes() {
+  if (!selectedCatId || !scanData) return;
+  const cat = scanData.categories[selectedCatId];
+  if (!cat) return;
+
+  const btn = document.getElementById('analyzeBtn');
+  btn.disabled = true; btn.textContent = '🔍 Analyzing…';
+  const fixesBody = document.getElementById('fixesBody');
+  fixesBody.innerHTML = '<div style="text-align:center;padding:16px;color:var(--text3)"><span class="spinner"></span> Sampling products to find fixable patterns…</div>';
+
+  const fixes = [];
+
+  try {
+    const breakdowns = Object.values(cat.attrBreakdown).sort((a,b)=>b.count-a.count);
+
+    for (const b of breakdowns) {
+      const fix = { attrName: b.attrName, defId: b.defId, kind: b.kind, vtype: b.vtype, count: b.count, productIds: [...new Set(b.productIds)], autoFixable: false, suggestedValue: null, suggestedLabel: null, status: 'pending' };
+
+      if (b.vtype === 'MISSING_CATEGORY_VALUE') {
+        // Find a product in this category that does NOT have this issue
+        const affectedSet = new Set(b.productIds);
+        const cleanProduct = cat.products.find(p => !affectedSet.has(p.id));
+
+        if (cleanProduct) {
+          try {
+            const prod = await mcpCall('get_product', { productId: cleanProduct.id, productName: cleanProduct.name });
+            // Find attribute value by definitionId
+            const attrs = prod.attributes || prod.attributeValues || {};
+            const val = attrs[b.defId];
+            if (val !== undefined && val !== null && val !== '') {
+              const displayVal = Array.isArray(val) ? val.join(', ') : String(val);
+              fix.autoFixable = true;
+              fix.suggestedValue = Array.isArray(val) ? val : [String(val)];
+              fix.suggestedLabel = displayVal;
+            }
+          } catch(e) { console.warn('Could not sample product for', b.attrName, e); }
+        }
+
+        if (!fix.autoFixable) {
+          // Check if we can get the attribute definition for guidance
+          try {
+            const def = await mcpCall('get_attribute_definition', { definitionId: b.defId, attributeName: b.attrName });
+            fix.attrType = def.dataType || 'unknown';
+            if (def.enumValues?.length) {
+              fix.enumOptions = def.enumValues.slice(0, 10).map(v => ({ id: v.id || v.value, label: v.value || v.label }));
+            }
+          } catch(e) { console.warn('Could not get def for', b.attrName, e); }
+        }
+      }
+
+      fixes.push(fix);
+    }
+
+    currentFixes = fixes;
+    renderFixes();
+
+  } catch(e) {
+    toast('Analysis failed: '+e.message, true);
+    fixesBody.innerHTML = '<div style="color:var(--red);padding:16px;text-align:center">Analysis failed — check console</div>';
+  } finally {
+    btn.disabled = false; btn.textContent = '🔍 Re-analyze';
+  }
+}
+
+function renderFixes() {
+  const body = document.getElementById('fixesBody');
+  body.innerHTML = '';
+
+  const autoFixes = currentFixes.filter(f => f.autoFixable);
+  const manualFixes = currentFixes.filter(f => !f.autoFixable);
+
+  if (autoFixes.length) {
+    document.getElementById('execAllBtn').classList.remove('hidden');
+  }
+
+  for (const fix of [...autoFixes, ...manualFixes]) {
+    const card = document.createElement('div');
+    card.className = 'fix-card';
+    card.id = `fix-${fix.defId}-${fix.vtype}`;
+
+    const statusHtml = fix.status === 'done' ? '<span class="done">✓ Applied</span>'
+      : fix.status === 'running' ? '<span class="spinner"></span> Applying…'
+      : fix.status === 'failed' ? '<span class="fail">✗ Failed</span>'
+      : '';
+
+    if (fix.autoFixable) {
+      card.innerHTML = `
+        <div class="fix-icon auto">⚡</div>
+        <div class="fix-body">
+          <div class="fix-title">Set <span class="attr-code">${fix.attrName}</span> → ${fix.suggestedLabel}</div>
+          <div class="fix-desc">Missing on ${fix.count} product${fix.count>1?'s':''} · Value inferred from clean products in this category</div>
+          <div class="fix-meta">${fix.kind} · ${fix.vtype.replace(/_/g,' ').toLowerCase()}</div>
+          <div class="fix-progress" id="fixprog-${fix.defId}">${statusHtml}</div>
+        </div>
+        <div class="fix-actions">
+          <button class="btn btn-sm btn-primary" onclick="executeSingleFix('${fix.defId}','${fix.vtype}')" ${fix.status!=='pending'?'disabled':''}>▶ Fix</button>
+        </div>`;
+    } else {
+      let hint = 'Needs manual review — could not infer a value automatically.';
+      if (fix.enumOptions?.length) {
+        hint = `Select attribute with ${fix.enumOptions.length} options: ${fix.enumOptions.slice(0,5).map(o=>o.label).join(', ')}${fix.enumOptions.length>5?'…':''}`;
+      } else if (fix.vtype === 'INVALID_ATTRIBUTE_VALUE') {
+        hint = 'Current values fail format or range restrictions. Review in Bluestone PIM with the fix-it column setup.';
+      }
+      card.innerHTML = `
+        <div class="fix-icon manual">⚠</div>
+        <div class="fix-body">
+          <div class="fix-title"><span class="attr-code">${fix.attrName}</span></div>
+          <div class="fix-desc">${fix.count} product${fix.count>1?'s':''} affected · ${hint}</div>
+          <div class="fix-meta">${fix.kind} · ${fix.vtype.replace(/_/g,' ').toLowerCase()}</div>
+        </div>
+        <div class="fix-actions"><span style="font-size:11px;color:var(--text3)">Manual</span></div>`;
+    }
+    body.appendChild(card);
+  }
+
+  document.getElementById('fixesSub').textContent = `${autoFixes.length} auto-fixable · ${manualFixes.length} need review`;
+}
+
+// ─── EXECUTE FIXES ───────────────────────────────────────────────────
+async function executeSingleFix(defId, vtype) {
+  const fix = currentFixes.find(f => f.defId === defId && f.vtype === vtype);
+  if (!fix || !fix.autoFixable || fix.status !== 'pending') return;
+  await applyFix(fix);
+}
+
+async function executeAllFixes() {
+  const auto = currentFixes.filter(f => f.autoFixable && f.status === 'pending');
+  if (!auto.length) { toast('No pending auto-fixes', true); return; }
+
+  const btn = document.getElementById('execAllBtn');
+  btn.disabled = true; btn.textContent = '▶ Running…';
+
+  for (const fix of auto) {
+    await applyFix(fix);
+  }
+
+  btn.textContent = '▶ Done'; toast(`Applied fixes to ${auto.length} error patterns ✓`);
+}
+
+async function applyFix(fix) {
+  fix.status = 'running'; renderFixes();
+  let success = 0, fail = 0;
+
+  for (const pid of fix.productIds) {
+    try {
+      const prodName = scanData.categories[selectedCatId]?.products?.find(p=>p.id===pid)?.name || '';
+      await mcpCall('set_product_attribute', {
+        definitionId: fix.defId,
+        productId: pid,
+        values: fix.suggestedValue,
+        attributeName: fix.attrName,
+        productName: prodName
+      });
+      success++;
+    } catch(e) {
+      console.warn('Fix failed for', pid, e); fail++;
+    }
+  }
+
+  fix.status = fail === 0 ? 'done' : (success > 0 ? 'done' : 'failed');
+  fix.resultMsg = `${success} fixed${fail ? ', '+fail+' failed' : ''}`;
+  renderFixes();
+
+  // Update progress display
+  const progEl = document.getElementById(`fixprog-${fix.defId}`);
+  if (progEl) progEl.innerHTML = `<span class="${fix.status==='done'?'done':'fail'}">${fix.resultMsg}</span>`;
 }
 
 // ─── COLUMN SETUP ────────────────────────────────────────────────────
 async function proposeColumnSetup() {
   const panel = document.getElementById('detailPanel');
-  const defIds = JSON.parse(panel.dataset.defIds || '[]');
-  const attrNames = JSON.parse(panel.dataset.attrNames || '[]');
-  const catName = panel.dataset.catName || 'Unknown';
+  const defIds = JSON.parse(panel.dataset.defIds||'[]');
+  const catName = panel.dataset.catName||'Unknown';
   const cfg = loadCfg();
-
-  if (!defIds.length) { toast('No failing attributes to include', true); return; }
-  if (!cfg.ownerEmail) { toast('Set owner email in Settings first', true); openSettings(); return; }
+  if (!defIds.length) { toast('No failing attributes to include',true); return; }
+  if (!cfg.ownerEmail) { toast('Set owner email in Settings first',true); openSettings(); return; }
 
   const btn = document.getElementById('ctaBtn');
-  btn.disabled = true;
-  btn.textContent = '⊞ Proposing…';
-
+  btn.disabled = true; btn.textContent = '⊞ Proposing…';
   try {
-    // Propose column setup using attribute definition IDs
-    const proposal = await mcpCall('propose_column_setup', {
-      source: 'attributes',
-      definitionIds: defIds,
-      proposedSetupName: `Fix-it: ${catName}`,
-      additionalStandardColumns: ['number', 'producttype']
-    });
-
+    const proposal = await mcpCall('propose_column_setup', { source:'attributes', definitionIds:defIds, proposedSetupName:`Fix-it: ${catName}`, additionalStandardColumns:['number','producttype'] });
     const columns = proposal?.createRequest?.columns || proposal?.columns;
-    if (!columns) {
-      toast('Could not generate column proposal — check console', true);
-      console.warn('Proposal response:', proposal);
-      return;
-    }
-
-    // Create the setup
+    if (!columns) { toast('Could not generate column proposal',true); console.warn(proposal); return; }
     btn.textContent = '⊞ Creating…';
-    const setupName = `Fix-it: ${catName}`;
-
-    await mcpCall('create_column_setup', {
-      name: setupName,
-      owner: cfg.ownerEmail,
-      isPublic: true,
-      columns: columns
-    });
-
-    toast(`Column setup "${setupName}" created ✓`);
-
-  } catch (e) {
-    toast('Column setup failed: ' + e.message, true);
-    console.error(e);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '⊞ Create fix-it column setup';
-  }
+    await mcpCall('create_column_setup', { name:`Fix-it: ${catName}`, owner:cfg.ownerEmail, isPublic:true, columns });
+    toast(`Column setup "Fix-it: ${catName}" created ✓`);
+  } catch(e) { toast('Column setup failed: '+e.message,true); }
+  finally { btn.disabled = false; btn.textContent = '⊞ Create fix-it column setup'; }
 }
 
 // ─── Init ────────────────────────────────────────────────────────────
-(function init() {
-  const cfg = loadCfg();
-  if (!cfg.workerUrl) {
-    // Show settings on first load
-    setTimeout(openSettings, 400);
-  }
-})();
+(function init() { if (!loadCfg().workerUrl) setTimeout(openSettings, 400); })();
 </script>
 </body>
 </html>
