@@ -335,7 +335,7 @@ async function mcpCall(tool, args = {}) {
   }
   const json = await res.json();
   const text = extractMcpText(json);
-  try { return JSON.parse(text); } catch { return text; }
+  return extractJson(text);
 }
 
 function extractMcpText(json) {
@@ -346,6 +346,14 @@ function extractMcpText(json) {
     return json.content.filter(c => c.type === 'text').map(c => c.text).join('\n');
   }
   return JSON.stringify(json);
+}
+
+function extractJson(text) {
+  try { return JSON.parse(text); } catch {}
+  const start = text.search(/[\{\[]/);
+  if (start === -1) return text;
+  const sub = text.slice(start);
+  try { return JSON.parse(sub); } catch { return text; }
 }
 
 // ─── Toast ───────────────────────────────────────────────────────────
