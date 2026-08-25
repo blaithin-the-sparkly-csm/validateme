@@ -27,7 +27,7 @@ a{color:var(--green);text-decoration:none}
 .labs-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-dot 3s ease-in-out infinite}
 @keyframes pulse-dot{0%,100%{opacity:.5}50%{opacity:1}}
 .shell{max-width:1100px;margin:0 auto;padding:20px 24px}
-header{display:flex;align-items:center;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:24px;flex-wrap:wrap}
+header{display:flex;align-items:center;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:20px;flex-wrap:wrap}
 header h1{font-size:18px;font-weight:600;flex:1;min-width:200px}
 .header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:13px;font-weight:500;border:1px solid var(--border);border-radius:var(--radius);padding:8px 16px;background:transparent;color:var(--text2);cursor:pointer;transition:all .15s}
@@ -37,8 +37,13 @@ header h1{font-size:18px;font-weight:600;flex:1;min-width:200px}
 .btn-primary:hover{background:var(--green-dim);border-color:var(--green-dim);color:var(--bg)}
 .btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
 .btn-sm{padding:5px 10px;font-size:12px}
-.btn-danger{background:transparent;color:var(--red);border-color:var(--red)}
-.btn-danger:hover{background:var(--red-bg);color:var(--red)}
+/* Scope bar */
+.scope-bar{display:flex;gap:10px;align-items:center;margin-bottom:20px;flex-wrap:wrap;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)}
+.scope-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.filter-select{font-family:var(--font);font-size:13px;font-weight:500;padding:8px 30px 8px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234A6A8F'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;outline:none;min-width:160px}
+.filter-select:focus{border-color:var(--green)}
+.filter-select:disabled{opacity:.4;cursor:not-allowed}
+.filter-select option{background:var(--surface);color:var(--text)}
 .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px}
 .metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px}
 .metric-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
@@ -46,16 +51,8 @@ header h1{font-size:18px;font-weight:600;flex:1;min-width:200px}
 .metric-sub{font-size:11px;color:var(--text3);margin-top:2px}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}
 .card-header{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:13px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
-.card-header .spacer{flex:1}
 .main-grid{display:grid;grid-template-columns:1fr 280px;gap:16px;margin-bottom:16px}
 @media(max-width:800px){.main-grid{grid-template-columns:1fr}}
-/* Filters */
-.filter-bar{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
-.filter-select{font-family:var(--font);font-size:12px;font-weight:500;padding:6px 28px 6px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234A6A8F'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;outline:none;min-width:140px}
-.filter-select:focus{border-color:var(--green)}
-.filter-select option{background:var(--surface);color:var(--text)}
-.filter-count{font-size:11px;color:var(--text3)}
-/* Heatmap */
 .heatmap-header{display:flex;align-items:center;gap:8px;padding:0 0 10px;border-bottom:1px solid var(--border);margin-bottom:4px;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.3px}
 .heatmap-header .h-cat{flex:1}
 .heatmap-header .h-bar{width:200px;text-align:center}
@@ -79,7 +76,6 @@ header h1{font-size:18px;font-weight:600;flex:1;min-width:200px}
 .attr-leader:last-child{border-bottom:none}
 .attr-leader .a-name{color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;margin-right:8px}
 .attr-leader .a-count{font-weight:600;font-family:var(--mono);flex-shrink:0}
-/* Detail + fixes panels */
 .detail-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}
 .detail-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
 .detail-title{font-size:16px;font-weight:600}
@@ -95,20 +91,28 @@ header h1{font-size:18px;font-weight:600;flex:1;min-width:200px}
 .vtype-MISSING{color:var(--red)}.vtype-INVALID{color:var(--amber)}
 .cta-area{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);flex-wrap:wrap}
 .cta-hint{font-size:11px;color:var(--text3);flex:1;min-width:200px}
-/* Suggested fixes */
+/* Fixes */
 .fix-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px;display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.fix-card.tier-high{border-left:3px solid var(--green)}
+.fix-card.tier-likely{border-left:3px solid var(--blue)}
+.fix-card.tier-manual{border-left:3px solid var(--amber)}
 .fix-icon{width:32px;height:32px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.fix-icon.auto{background:var(--green-bg);color:var(--green)}
+.fix-icon.high{background:var(--green-bg);color:var(--green)}
+.fix-icon.likely{background:var(--blue-bg);color:var(--blue)}
 .fix-icon.manual{background:var(--amber-bg);color:var(--amber)}
-.fix-body{flex:1;min-width:200px}
-.fix-title{font-size:13px;font-weight:600;margin-bottom:2px}
+.fix-body{flex:1;min-width:220px}
+.fix-title{font-size:13px;font-weight:600;margin-bottom:3px}
 .fix-desc{font-size:12px;color:var(--text2);margin-bottom:6px}
-.fix-meta{font-size:11px;color:var(--text3)}
-.fix-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
-.fix-progress{margin-top:8px;font-size:11px;color:var(--text3)}
-.fix-progress .done{color:var(--green)}
-.fix-progress .fail{color:var(--red)}
-/* Progress */
+.fix-meta{font-size:11px;color:var(--text3);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.conf-pill{font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px;text-transform:uppercase;letter-spacing:.3px}
+.conf-high{background:var(--green-bg);color:var(--green)}
+.conf-likely{background:var(--blue-bg);color:var(--blue)}
+.fix-val{font-family:var(--mono);font-size:12px;color:var(--text);background:var(--bg);padding:1px 6px;border-radius:4px;border:1px solid var(--border)}
+.fix-actions{display:flex;align-items:center;gap:6px;flex-shrink:0;align-self:center}
+.fix-select{font-family:var(--font);font-size:12px;padding:6px 24px 6px 10px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234A6A8F'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;outline:none;max-width:180px}
+.fix-select option{background:var(--surface)}
+.fix-prog{font-size:11px;margin-top:6px}
+.fix-prog .done{color:var(--green)}.fix-prog .fail{color:var(--red)}
 .progress-bar{height:4px;background:var(--surface2);border-radius:2px;overflow:hidden;margin:8px 0}
 .progress-fill{height:100%;background:var(--green);border-radius:2px;transition:width .3s}
 .scan-status{font-size:12px;color:var(--text3)}
@@ -126,8 +130,8 @@ header h1{font-size:18px;font-weight:600;flex:1;min-width:200px}
 .modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
 .empty{text-align:center;padding:60px 20px;color:var(--text3)}
 .empty h3{font-size:16px;font-weight:600;color:var(--text2);margin-bottom:8px}
-.empty p{font-size:13px;max-width:400px;margin:0 auto 20px}
-.spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .6s linear infinite}
+.empty p{font-size:13px;max-width:440px;margin:0 auto 20px}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hidden{display:none!important}
 footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
@@ -140,9 +144,19 @@ footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
     <div class="header-actions">
       <span class="labs-badge">BLUESTONE PIM LABS</span>
       <button class="btn btn-sm" onclick="openSettings()">⚙ Settings</button>
-      <button class="btn btn-primary" id="scanBtn" onclick="startScan()">Scan catalog</button>
     </div>
   </header>
+
+  <!-- Scope bar: catalog + subcategory picker -->
+  <div class="scope-bar">
+    <span class="scope-label">Scope</span>
+    <select class="filter-select" id="catalogSel" onchange="onCatalogChange()"><option value="">Loading catalogs…</option></select>
+    <select class="filter-select" id="parentSel" onchange="onParentChange()" disabled><option value="__all">All categories</option></select>
+    <select class="filter-select" id="subSel" onchange="onSubChange()" disabled><option value="__all">All subcategories</option></select>
+    <button class="btn btn-primary" id="scanBtn" onclick="startScan()" disabled>Scan</button>
+    <span class="scan-status" id="scopeHint"></span>
+  </div>
+
   <div id="scanProgress" class="hidden" style="margin-bottom:20px">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
       <span class="spinner" id="scanSpinner"></span>
@@ -150,32 +164,25 @@ footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
     </div>
     <div class="progress-bar"><div class="progress-fill" id="scanFill" style="width:0%"></div></div>
   </div>
+
   <div class="metrics hidden" id="metricsStrip">
     <div class="metric"><div class="metric-label">Total errors</div><div class="metric-val" id="mTotalErrors" style="color:var(--red)">—</div><div class="metric-sub" id="mTotalProducts"></div></div>
     <div class="metric"><div class="metric-label">Categories affected</div><div class="metric-val" id="mCatsAffected">—</div><div class="metric-sub" id="mCatsTotal"></div></div>
     <div class="metric"><div class="metric-label">Top error kind</div><div class="metric-val" id="mTopKind" style="font-size:15px">—</div><div class="metric-sub" id="mTopKindSub"></div></div>
     <div class="metric"><div class="metric-label">Top failing attribute</div><div class="metric-val" id="mTopAttr" style="font-size:15px">—</div><div class="metric-sub" id="mTopAttrSub"></div></div>
   </div>
+
   <div id="mainContent">
     <div class="empty" id="emptyState">
-      <h3>No scan results yet</h3>
-      <p>Configure your Worker URL in Settings, then hit Scan catalog to crawl all categories in Paradigm Workflow TEST and aggregate validation errors.</p>
-      <button class="btn" onclick="openSettings()">⚙ Settings</button>
+      <h3>Pick a catalog to begin</h3>
+      <p>Choose any catalog and (optionally) narrow to a subcategory, then Scan. The dashboard crawls the selected scope and aggregates validation errors by category, kind, and attribute.</p>
     </div>
   </div>
+
   <div class="main-grid hidden" id="resultsGrid">
     <div class="card" style="padding-bottom:8px">
       <div class="card-header">▤ Errors by subcategory</div>
-      <div class="filter-bar">
-        <select class="filter-select" id="filterParent" onchange="onFilterChange()"><option value="__all">All categories</option></select>
-        <select class="filter-select" id="filterSub" onchange="onFilterChange()"><option value="__all">All subcategories</option></select>
-        <span class="filter-count" id="filterCount"></span>
-      </div>
-      <div class="heatmap-header">
-        <span class="h-cat">Category</span>
-        <span class="h-bar">Error composition</span>
-        <span class="h-count">Total</span>
-      </div>
+      <div class="heatmap-header"><span class="h-cat">Category</span><span class="h-bar">Error composition</span><span class="h-count">Total</span></div>
       <div id="heatmapBody"></div>
     </div>
     <div>
@@ -183,6 +190,7 @@ footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
       <div class="card"><div class="card-header">⬡ Top failing attributes</div><div id="attrLeaderboard"></div></div>
     </div>
   </div>
+
   <div class="detail-panel hidden" id="detailPanel">
     <div class="detail-header">
       <div><div class="detail-title" id="detailTitle">—</div><div class="detail-sub" id="detailSub">—</div></div>
@@ -194,25 +202,27 @@ footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
       <div class="cta-hint" id="ctaHint">—</div>
     </div>
   </div>
-  <!-- Suggested fixes -->
+
   <div class="detail-panel hidden" id="fixesPanel">
     <div class="detail-header">
       <div><div class="detail-title">⚡ Suggested fixes</div><div class="detail-sub" id="fixesSub">—</div></div>
       <div style="display:flex;gap:8px">
         <button class="btn btn-sm" id="analyzeBtn" onclick="analyzeFixes()">🔍 Analyze</button>
-        <button class="btn btn-sm btn-primary hidden" id="execAllBtn" onclick="executeAllFixes()">▶ Execute all auto-fixes</button>
+        <button class="btn btn-sm btn-primary hidden" id="execAllBtn" onclick="executeAllFixes()">▶ Apply all confident fixes</button>
       </div>
     </div>
     <div id="fixesBody">
-      <div style="text-align:center;padding:20px;color:var(--text3);font-size:13px">Click <strong>Analyze</strong> to sample products and identify auto-fixable errors in this category.</div>
+      <div style="text-align:center;padding:20px;color:var(--text3);font-size:13px">Click <strong>Analyze</strong> to sample clean products and infer fill values for the missing-value errors in this category.</div>
     </div>
   </div>
+
   <footer>Built on the Bluestone MCP · <a href="https://labs.bluestonepim.com" target="_blank">labs.bluestonepim.com</a> · Live mode — writes to Bluestone PIM LABS via MCP</footer>
 </div>
+
 <div class="modal-overlay" id="settingsModal">
   <div class="modal">
     <h2>⚙ Connection settings</h2>
-    <div class="field"><label>Worker URL</label><input id="cfgWorkerUrl" placeholder="https://your-worker.your-subdomain.workers.dev"></div>
+    <div class="field"><label>Worker URL</label><input id="cfgWorkerUrl" placeholder="https://your-worker.workers.dev"></div>
     <div class="field"><label>Demo secret</label><input id="cfgSecret" type="password" placeholder="••••••••"></div>
     <div class="field"><label>Column setup owner email</label><input id="cfgOwnerEmail" placeholder="user@company.com"></div>
     <div class="modal-actions">
@@ -223,21 +233,20 @@ footer{text-align:center;padding:32px 0 16px;font-size:11px;color:var(--text3)}
   </div>
 </div>
 <div class="toast" id="toast"></div>
+
 <script>
-const CATALOG_ID = '69f1bb2954e43fd1f8a00891';
-const CATALOG_NAME = 'Paradigm Workflow TEST';
 const KIND_COLORS = { CLA:'var(--red)', Attribute:'var(--amber)', VLA:'var(--blue)', Compound:'var(--purple)', Dictionary:'var(--gray)', Other:'var(--text3)' };
 
+let catalogs = [];
+let selectedCatalog = null;      // { id, name }
+let categoryTree = [];
 let scanData = null;
 let selectedCatId = null;
-let categoryTree = [];       // raw tree from MCP
-let currentFixes = [];        // analyzed fix suggestions for selected category
-let activeFilter = { parent: '__all', sub: '__all' };
+let currentFixes = [];
+let dictionaryCache = {};         // defId → [{id,label}]
 
 // ─── Settings ────────────────────────────────────────────────────────
-function loadCfg() {
-  return { workerUrl: localStorage.getItem('bs_worker_url')||'', secret: localStorage.getItem('bs_secret')||'', ownerEmail: localStorage.getItem('bs_owner_email')||'' };
-}
+function loadCfg() { return { workerUrl: localStorage.getItem('bs_worker_url')||'', secret: localStorage.getItem('bs_secret')||'', ownerEmail: localStorage.getItem('bs_owner_email')||'' }; }
 function openSettings() {
   const c = loadCfg();
   document.getElementById('cfgWorkerUrl').value = c.workerUrl;
@@ -250,16 +259,14 @@ function saveSettings() {
   localStorage.setItem('bs_worker_url', document.getElementById('cfgWorkerUrl').value.replace(/\/$/,''));
   localStorage.setItem('bs_secret', document.getElementById('cfgSecret').value);
   localStorage.setItem('bs_owner_email', document.getElementById('cfgOwnerEmail').value);
-  closeSettings(); toast('Settings saved');
+  closeSettings(); toast('Settings saved'); loadCatalogs();
 }
 
-// ─── MCP ─────────────────────────────────────────────────────────────
 async function mcpCall(tool, args = {}) {
   const cfg = loadCfg();
   if (!cfg.workerUrl || !cfg.secret) throw new Error('Configure Worker URL and secret in Settings');
   const res = await fetch(cfg.workerUrl + '/api/mcp-call', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Demo-Secret': cfg.secret },
+    method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Demo-Secret': cfg.secret },
     body: JSON.stringify({ tool, args })
   });
   if (!res.ok) { const t = await res.text().catch(()=>''); throw new Error(`MCP ${res.status}: ${t.slice(0,200)}`); }
@@ -271,6 +278,7 @@ function extractMcpText(j) {
   return JSON.stringify(j);
 }
 function extractJson(text) {
+  if (typeof text !== 'string') return text;
   try { return JSON.parse(text); } catch {}
   const s = text.search(/[\{\[]/);
   if (s === -1) return text;
@@ -281,34 +289,97 @@ function toast(msg, isError=false) {
   el.textContent = msg; el.className = 'toast show' + (isError?' error':'');
   clearTimeout(el._t); el._t = setTimeout(()=> el.className='toast', 3500);
 }
-async function testConnection() {
-  try { await mcpCall('list_catalogs',{}); toast('Connection OK ✓'); } catch(e) { toast('Connection failed: '+e.message,true); }
+async function testConnection() { try { await mcpCall('list_catalogs',{}); toast('Connection OK ✓'); } catch(e) { toast('Connection failed: '+e.message,true); } }
+
+// ─── Load catalogs ───────────────────────────────────────────────────
+async function loadCatalogs() {
+  const cfg = loadCfg();
+  const sel = document.getElementById('catalogSel');
+  if (!cfg.workerUrl || !cfg.secret) { sel.innerHTML = '<option value="">Configure settings first…</option>'; return; }
+  sel.innerHTML = '<option value="">Loading catalogs…</option>';
+  try {
+    const res = await mcpCall('list_catalogs', {});
+    catalogs = res.catalogs || [];
+    sel.innerHTML = '<option value="">Select a catalog…</option>';
+    for (const c of catalogs) sel.innerHTML += `<option value="${c.id}">${c.name}</option>`;
+  } catch(e) {
+    sel.innerHTML = '<option value="">Failed to load catalogs</option>';
+    toast('Could not load catalogs: '+e.message, true);
+  }
+}
+
+async function onCatalogChange() {
+  const id = document.getElementById('catalogSel').value;
+  const parentSel = document.getElementById('parentSel');
+  const subSel = document.getElementById('subSel');
+  const scanBtn = document.getElementById('scanBtn');
+  parentSel.innerHTML = '<option value="__all">All categories</option>';
+  subSel.innerHTML = '<option value="__all">All subcategories</option>';
+  parentSel.disabled = true; subSel.disabled = true; scanBtn.disabled = true;
+  categoryTree = [];
+
+  if (!id) { selectedCatalog = null; return; }
+  selectedCatalog = catalogs.find(c => c.id === id);
+  document.getElementById('scopeHint').textContent = 'Loading category tree…';
+
+  try {
+    const tree = await mcpCall('list_category_tree', { catalogId: id, catalogName: selectedCatalog.name, limit: 500 });
+    categoryTree = tree.categories || [];
+    // Parent = depth 1
+    const parents = categoryTree.filter(c => c.depth === 1).sort((a,b)=>a.name.localeCompare(b.name));
+    for (const p of parents) parentSel.innerHTML += `<option value="${p.id}">${p.name}</option>`;
+    parentSel.disabled = false;
+    scanBtn.disabled = false;
+    document.getElementById('scopeHint').textContent = `${categoryTree.length} categories · scan all or narrow below`;
+  } catch(e) {
+    document.getElementById('scopeHint').textContent = '';
+    toast('Could not load categories: '+e.message, true);
+  }
+}
+
+function onParentChange() {
+  const parentId = document.getElementById('parentSel').value;
+  const subSel = document.getElementById('subSel');
+  subSel.innerHTML = '<option value="__all">All subcategories</option>';
+  if (parentId === '__all') { subSel.disabled = true; return; }
+  const subs = categoryTree.filter(c => c.parentId === parentId).sort((a,b)=>a.name.localeCompare(b.name));
+  for (const s of subs) subSel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+  subSel.disabled = subs.length === 0;
+}
+function onSubChange() {}
+
+// Which leaf categories to scan, based on scope selection
+function getScopeCats() {
+  const parentId = document.getElementById('parentSel').value;
+  const subId = document.getElementById('subSel').value;
+  if (subId && subId !== '__all') return categoryTree.filter(c => c.id === subId);
+  if (parentId && parentId !== '__all') {
+    // the parent + all its descendants that hold products (depth>=2 under it, plus the parent itself)
+    return categoryTree.filter(c => c.id === parentId || c.parentId === parentId);
+  }
+  return categoryTree.filter(c => c.depth >= 1);
 }
 
 // ─── SCAN ────────────────────────────────────────────────────────────
 async function startScan() {
+  if (!selectedCatalog) { toast('Select a catalog first', true); return; }
   const btn = document.getElementById('scanBtn');
   btn.disabled = true; btn.textContent = 'Scanning…';
   document.getElementById('scanProgress').classList.remove('hidden');
+  document.getElementById('scanSpinner').style.display = 'inline-block';
   document.getElementById('emptyState').classList.add('hidden');
-  updateScan('Fetching category tree…', 0);
+  selectedCatId = null; dictionaryCache = {};
+  updateScan('Preparing…', 0);
+
+  const scopeCats = getScopeCats();
 
   try {
-    const tree = await mcpCall('list_category_tree', { catalogId: CATALOG_ID, catalogName: CATALOG_NAME, limit: 500 });
-    categoryTree = tree.categories || [];
-    const leafCats = categoryTree.filter(c => c.depth >= 1);
-
-    const results = {
-      categories: {},
-      byKind: {}, byAttr: {}, byVtype: {},
-      totalErrors: 0, totalProducts: 0, productsWithIssues: 0,
-      parentNames: new Set()
-    };
-
+    const results = { categories:{}, byKind:{}, byAttr:{}, byVtype:{}, totalErrors:0, totalProducts:0, productsWithIssues:0, parentNames:new Set() };
     let step = 0;
-    for (const cat of leafCats) {
+    for (const cat of scopeCats) {
+      if (cat.depth === 0) continue;
       step++;
-      updateScan(`Scanning ${cat.name} (${step}/${leafCats.length})…`, (step/(leafCats.length+1))*100);
+      updateScan(`Scanning ${cat.name} (${step}/${scopeCats.length})…`, (step/(scopeCats.length+1))*100);
 
       let allProducts = [], page = 1, hasMore = true;
       while (hasMore) {
@@ -322,36 +393,28 @@ async function startScan() {
       if (parentName) results.parentNames.add(parentName);
 
       results.categories[cat.id] = {
-        name: cat.name, path: cat.path, depth: cat.depth, parentName,
-        parentId: cat.parentId || '',
-        totalErrors: 0, productCount: allProducts.length,
-        products: allProducts,           // keep for fix analysis
-        productIssues: {},               // productId → [issues]
-        issues: [], attrBreakdown: {}
+        name: cat.name, path: cat.path, depth: cat.depth, parentName, parentId: cat.parentId||'',
+        totalErrors:0, productCount: allProducts.length, products: allProducts,
+        issues:[], attrBreakdown:{}
       };
       results.totalProducts += allProducts.length;
 
       const ids = allProducts.map(p => p.id);
       for (let i = 0; i < ids.length; i += 100) {
         try {
-          const vRes = await mcpCall('list_product_validation_issues', { productIds: ids.slice(i, i+100) });
+          const vRes = await mcpCall('list_product_validation_issues', { productIds: ids.slice(i,i+100) });
           for (const p of (vRes.products || [])) {
             if (p.issueCount > 0) results.productsWithIssues++;
-            results.categories[cat.id].productIssues[p.productId] = p.issues || [];
             for (const issue of (p.issues || [])) {
               results.totalErrors++;
               results.categories[cat.id].totalErrors++;
-              const kind = issue.kind||'Other';
-              results.byKind[kind] = (results.byKind[kind]||0)+1;
-              const vtype = issue.validationType||'UNKNOWN';
-              results.byVtype[vtype] = (results.byVtype[vtype]||0)+1;
+              const kind = issue.kind||'Other'; results.byKind[kind]=(results.byKind[kind]||0)+1;
+              const vtype = issue.validationType||'UNKNOWN'; results.byVtype[vtype]=(results.byVtype[vtype]||0)+1;
               const attr = issue.attributeName||'Unknown';
-              if (!results.byAttr[attr]) results.byAttr[attr] = { count:0, defId:issue.definitionId };
+              if (!results.byAttr[attr]) results.byAttr[attr]={count:0,defId:issue.definitionId};
               results.byAttr[attr].count++;
               const bKey = `${attr}||${kind}||${vtype}`;
-              if (!results.categories[cat.id].attrBreakdown[bKey]) {
-                results.categories[cat.id].attrBreakdown[bKey] = { attrName:attr, defId:issue.definitionId, kind, vtype, count:0, productIds:[] };
-              }
+              if (!results.categories[cat.id].attrBreakdown[bKey]) results.categories[cat.id].attrBreakdown[bKey]={attrName:attr,defId:issue.definitionId,kind,vtype,count:0,productIds:[]};
               results.categories[cat.id].attrBreakdown[bKey].count++;
               results.categories[cat.id].attrBreakdown[bKey].productIds.push(p.productId);
               results.categories[cat.id].issues.push(issue);
@@ -360,16 +423,14 @@ async function startScan() {
         } catch(e) { console.warn('Validation batch failed for', cat.name, e); }
       }
     }
-
     scanData = results;
     updateScan('Scan complete ✓', 100);
     document.getElementById('scanSpinner').style.display = 'none';
-    buildFilters();
     renderResults();
   } catch(e) {
     toast('Scan failed: '+e.message, true);
     updateScan('Scan failed', 0);
-  } finally { btn.disabled = false; btn.textContent = 'Scan catalog'; }
+  } finally { btn.disabled = false; btn.textContent = 'Scan'; }
 }
 
 function updateScan(msg, pct) {
@@ -377,233 +438,203 @@ function updateScan(msg, pct) {
   document.getElementById('scanFill').style.width = Math.round(pct)+'%';
 }
 
-// ─── FILTERS ─────────────────────────────────────────────────────────
-function buildFilters() {
-  if (!scanData) return;
-  const parentSel = document.getElementById('filterParent');
-  parentSel.innerHTML = '<option value="__all">All categories</option>';
-  for (const name of [...scanData.parentNames].sort()) {
-    parentSel.innerHTML += `<option value="${name}">${name}</option>`;
-  }
-}
-
-function onFilterChange() {
-  activeFilter.parent = document.getElementById('filterParent').value;
-  const subSel = document.getElementById('filterSub');
-
-  // Rebuild sub options based on parent
-  subSel.innerHTML = '<option value="__all">All subcategories</option>';
-  if (activeFilter.parent !== '__all') {
-    const subs = Object.values(scanData.categories).filter(c => c.parentName === activeFilter.parent && c.depth >= 2);
-    for (const s of subs.sort((a,b) => a.name.localeCompare(b.name))) {
-      subSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
-    }
-  }
-  activeFilter.sub = subSel.value;
-  renderResults();
-}
-
-function getFilteredCats() {
-  if (!scanData) return [];
-  return Object.entries(scanData.categories)
-    .map(([id, c]) => ({ id, ...c }))
-    .filter(c => {
-      if (activeFilter.parent !== '__all' && c.parentName !== activeFilter.parent) return false;
-      if (activeFilter.sub !== '__all' && c.name !== activeFilter.sub) return false;
-      return true;
-    })
-    .sort((a, b) => b.totalErrors - a.totalErrors);
-}
-
 // ─── RENDER ──────────────────────────────────────────────────────────
 function renderResults() {
   if (!scanData) return;
+  const d = scanData;
+  const cats = Object.entries(d.categories).map(([id,c])=>({id,...c})).sort((a,b)=>b.totalErrors-a.totalErrors);
 
-  const filtered = getFilteredCats();
-  const totalErrors = filtered.reduce((s,c) => s+c.totalErrors, 0);
-  const totalProducts = filtered.reduce((s,c) => s+c.productCount, 0);
-  const catsWithErrors = filtered.filter(c => c.totalErrors > 0).length;
-
-  // Compute filtered kind + attr breakdowns
-  const fKind = {}, fAttr = {};
-  for (const cat of filtered) {
-    for (const issue of cat.issues) {
-      const k = issue.kind||'Other';
-      fKind[k] = (fKind[k]||0)+1;
-      const a = issue.attributeName||'Unknown';
-      if (!fAttr[a]) fAttr[a] = { count:0, defId:issue.definitionId };
-      fAttr[a].count++;
-    }
-  }
-
-  // Metrics
   document.getElementById('metricsStrip').classList.remove('hidden');
-  document.getElementById('mTotalErrors').textContent = totalErrors.toLocaleString();
-  document.getElementById('mTotalProducts').textContent = `across ${totalProducts.toLocaleString()} products`;
-  document.getElementById('mCatsAffected').innerHTML = `${catsWithErrors} <span style="font-size:13px;color:var(--text3)">/ ${filtered.length}</span>`;
-  document.getElementById('mCatsTotal').textContent = filtered.length > 0 ? `${Math.round(catsWithErrors/filtered.length*100)}% of selection` : '';
+  document.getElementById('mTotalErrors').textContent = d.totalErrors.toLocaleString();
+  document.getElementById('mTotalProducts').textContent = `across ${d.productsWithIssues.toLocaleString()} products`;
+  const catsWithErrors = cats.filter(c=>c.totalErrors>0).length;
+  document.getElementById('mCatsAffected').innerHTML = `${catsWithErrors} <span style="font-size:13px;color:var(--text3)">/ ${cats.length}</span>`;
+  document.getElementById('mCatsTotal').textContent = cats.length ? `${Math.round(catsWithErrors/cats.length*100)}% of scope` : '';
 
-  const kindEntries = Object.entries(fKind).sort((a,b) => b[1]-a[1]);
+  const kindEntries = Object.entries(d.byKind).sort((a,b)=>b[1]-a[1]);
   if (kindEntries.length) {
     document.getElementById('mTopKind').textContent = kindEntries[0][0];
-    document.getElementById('mTopKindSub').textContent = `${kindEntries[0][1].toLocaleString()} errors (${totalErrors ? Math.round(kindEntries[0][1]/totalErrors*100) : 0}%)`;
+    document.getElementById('mTopKindSub').textContent = `${kindEntries[0][1].toLocaleString()} errors (${d.totalErrors?Math.round(kindEntries[0][1]/d.totalErrors*100):0}%)`;
   }
-  const attrEntries = Object.entries(fAttr).sort((a,b) => b[1].count - a[1].count);
+  const attrEntries = Object.entries(d.byAttr).sort((a,b)=>b[1].count-a[1].count);
   if (attrEntries.length) {
     document.getElementById('mTopAttr').textContent = attrEntries[0][0];
     document.getElementById('mTopAttrSub').textContent = `${attrEntries[0][1].count.toLocaleString()} products affected`;
   }
 
   document.getElementById('resultsGrid').classList.remove('hidden');
-  document.getElementById('filterCount').textContent = `${filtered.length} categories · ${totalErrors} errors`;
 
-  // Heatmap
-  const heatmapBody = document.getElementById('heatmapBody');
-  heatmapBody.innerHTML = '';
-  for (const cat of filtered) {
+  const heatmapBody = document.getElementById('heatmapBody'); heatmapBody.innerHTML='';
+  for (const cat of cats) {
     const catKinds = {};
     for (const issue of cat.issues) { const k=issue.kind||'Other'; catKinds[k]=(catKinds[k]||0)+1; }
     const row = document.createElement('div');
-    row.className = 'heatmap-row' + (selectedCatId === cat.id ? ' selected' : '');
-    row.dataset.catId = cat.id;
+    row.className = 'heatmap-row'; row.dataset.catId = cat.id;
     row.onclick = () => selectCategory(cat.id);
-    let barHtml = '';
-    for (const [kind,count] of Object.entries(catKinds).sort((a,b)=>b[1]-a[1])) {
-      barHtml += `<div class="h-seg" style="flex:${count};background:${KIND_COLORS[kind]||'var(--text3)'}" title="${kind}: ${count}"></div>`;
-    }
-    const parentLabel = (activeFilter.parent === '__all' && cat.parentName) ? `<span class="parent">${cat.parentName} ›</span>` : '';
+    let barHtml=''; for (const [kind,count] of Object.entries(catKinds).sort((a,b)=>b[1]-a[1])) barHtml+=`<div class="h-seg" style="flex:${count};background:${KIND_COLORS[kind]||'var(--text3)'}" title="${kind}: ${count}"></div>`;
+    const parentLabel = cat.parentName ? `<span class="parent">${cat.parentName} ›</span>` : '';
     row.innerHTML = `<div class="h-cat">${parentLabel}${cat.name}</div><div class="h-bar">${cat.totalErrors>0?barHtml:'<div style="flex:1;background:var(--surface2);height:100%;border-radius:3px"></div>'}</div><div class="h-count" style="color:${cat.totalErrors>0?'var(--text)':'var(--text3)'}">${cat.totalErrors}</div>`;
     heatmapBody.appendChild(row);
   }
 
-  // Kind sidebar
-  const kindDiv = document.getElementById('kindBreakdown'); kindDiv.innerHTML = '';
-  const maxKind = kindEntries.length ? kindEntries[0][1] : 1;
-  for (const [kind,count] of kindEntries) {
-    kindDiv.innerHTML += `<div class="etype-row"><div class="etype-dot" style="background:${KIND_COLORS[kind]||'var(--text3)'}"></div><div class="etype-name">${kind}</div><div class="etype-count">${count.toLocaleString()}</div></div><div class="etype-bar"><div class="etype-fill" style="width:${Math.round(count/maxKind*100)}%;background:${KIND_COLORS[kind]||'var(--text3)'}"></div></div>`;
-  }
+  const kindDiv = document.getElementById('kindBreakdown'); kindDiv.innerHTML='';
+  const maxKind = kindEntries.length?kindEntries[0][1]:1;
+  for (const [kind,count] of kindEntries) kindDiv.innerHTML += `<div class="etype-row"><div class="etype-dot" style="background:${KIND_COLORS[kind]||'var(--text3)'}"></div><div class="etype-name">${kind}</div><div class="etype-count">${count.toLocaleString()}</div></div><div class="etype-bar"><div class="etype-fill" style="width:${Math.round(count/maxKind*100)}%;background:${KIND_COLORS[kind]||'var(--text3)'}"></div></div>`;
 
-  // Attr leaderboard
-  const attrDiv = document.getElementById('attrLeaderboard'); attrDiv.innerHTML = '';
-  for (const [name,data] of attrEntries.slice(0,10)) {
-    attrDiv.innerHTML += `<div class="attr-leader"><span class="a-name">${name}</span><span class="a-count">${data.count.toLocaleString()}</span></div>`;
-  }
+  const attrDiv = document.getElementById('attrLeaderboard'); attrDiv.innerHTML='';
+  for (const [name,data] of attrEntries.slice(0,10)) attrDiv.innerHTML += `<div class="attr-leader"><span class="a-name">${name}</span><span class="a-count">${data.count.toLocaleString()}</span></div>`;
 
-  // Re-select if category still visible
-  if (selectedCatId && filtered.some(c => c.id === selectedCatId)) {
-    selectCategory(selectedCatId);
-  } else if (filtered.length && filtered[0].totalErrors > 0) {
-    selectCategory(filtered[0].id);
-  } else {
-    document.getElementById('detailPanel').classList.add('hidden');
-    document.getElementById('fixesPanel').classList.add('hidden');
-  }
+  if (cats.length && cats[0].totalErrors>0) selectCategory(cats[0].id);
+  else { document.getElementById('detailPanel').classList.add('hidden'); document.getElementById('fixesPanel').classList.add('hidden'); }
 }
 
-// ─── SELECT CATEGORY ─────────────────────────────────────────────────
 function selectCategory(catId) {
   selectedCatId = catId;
-  const cat = scanData.categories[catId];
-  if (!cat) return;
-
-  document.querySelectorAll('.heatmap-row').forEach(r => r.classList.toggle('selected', r.dataset.catId===catId));
+  const cat = scanData.categories[catId]; if (!cat) return;
+  document.querySelectorAll('.heatmap-row').forEach(r=>r.classList.toggle('selected', r.dataset.catId===catId));
 
   const panel = document.getElementById('detailPanel');
   panel.classList.remove('hidden');
   document.getElementById('detailTitle').textContent = cat.name;
   document.getElementById('detailSub').textContent = `${cat.totalErrors} errors across ${cat.productCount} products`;
-  const pctOfTotal = scanData.totalErrors ? Math.round(cat.totalErrors/scanData.totalErrors*100) : 0;
-  document.getElementById('detailBadge').textContent = `${pctOfTotal}% of all errors`;
+  document.getElementById('detailBadge').textContent = `${scanData.totalErrors?Math.round(cat.totalErrors/scanData.totalErrors*100):0}% of scope errors`;
 
-  const body = document.getElementById('detailBody'); body.innerHTML = '';
+  const body = document.getElementById('detailBody'); body.innerHTML='';
   const breakdowns = Object.values(cat.attrBreakdown).sort((a,b)=>b.count-a.count);
-  const defIds = new Set(), attrNames = [];
+  const defIds = new Set(), attrNames=[];
   for (const b of breakdowns) {
-    const vtypeLabel = b.vtype.replace(/_/g,' ').toLowerCase().replace(/^\w/, c=>c.toUpperCase());
+    const vtypeLabel = b.vtype.replace(/_/g,' ').toLowerCase().replace(/^\w/,c=>c.toUpperCase());
     const tr = document.createElement('tr');
     tr.innerHTML = `<td><span class="attr-code">${b.attrName}</span></td><td><span class="kind-${b.kind}">${b.kind}</span></td><td><span class="vtype-${b.vtype.startsWith('MISSING')?'MISSING':'INVALID'}">${vtypeLabel}</span></td><td style="text-align:right;font-weight:600;font-family:var(--mono)">${b.count}</td>`;
     body.appendChild(tr);
     if (b.defId) defIds.add(b.defId);
     if (!attrNames.includes(b.attrName)) attrNames.push(b.attrName);
   }
-
-  document.getElementById('ctaHint').textContent = attrNames.length
-    ? `Creates a column setup with ${attrNames.join(', ')} — apply in Bluestone PIM to isolate failing attributes.`
-    : 'No failing attributes to build a column setup from.';
-
+  document.getElementById('ctaHint').textContent = attrNames.length ? `Creates a column setup with ${attrNames.join(', ')} — apply in Bluestone PIM to isolate failing attributes.` : 'No failing attributes.';
   panel.dataset.defIds = JSON.stringify([...defIds]);
   panel.dataset.attrNames = JSON.stringify(attrNames);
   panel.dataset.catName = cat.name;
 
-  // Show fixes panel, reset state
   const fixesPanel = document.getElementById('fixesPanel');
   fixesPanel.classList.remove('hidden');
-  document.getElementById('fixesSub').textContent = `${cat.name} — ${breakdowns.length} error patterns`;
-  document.getElementById('fixesBody').innerHTML = '<div style="text-align:center;padding:20px;color:var(--text3);font-size:13px">Click <strong>Analyze</strong> to sample products and identify auto-fixable errors in this category.</div>';
-  document.getElementById('analyzeBtn').classList.remove('hidden');
+  document.getElementById('fixesSub').textContent = `${cat.name} — click Analyze to infer fill values`;
+  document.getElementById('fixesBody').innerHTML = '<div style="text-align:center;padding:20px;color:var(--text3);font-size:13px">Click <strong>Analyze</strong> to sample clean products and infer fill values for the missing-value errors in this category.</div>';
   document.getElementById('analyzeBtn').disabled = false;
   document.getElementById('analyzeBtn').textContent = '🔍 Analyze';
   document.getElementById('execAllBtn').classList.add('hidden');
   currentFixes = [];
 }
 
+// ─── Attribute value helpers ─────────────────────────────────────────
+// product.attributes is an ARRAY of { definitionId, values?:[], dictionary?:[] }
+function attrValueFor(product, defId) {
+  const attrs = Array.isArray(product.attributes) ? product.attributes : [];
+  const a = attrs.find(x => x.definitionId === defId);
+  if (!a) return null;
+  if (Array.isArray(a.values) && a.values.length) return { raw: a.values, kind: 'values' };
+  if (Array.isArray(a.dictionary) && a.dictionary.length) return { raw: a.dictionary, kind: 'dictionary' };
+  return null;
+}
+
+async function getDictionaryLabels(defId) {
+  if (dictionaryCache[defId]) return dictionaryCache[defId];
+  try {
+    const res = await mcpCall('list_dictionary_values', { definitionId: defId, limit: 200 });
+    const vals = (res.values || res.dictionaryValues || []).map(v => ({ id: v.id || v.value, label: v.name || v.value || v.label || v.id }));
+    dictionaryCache[defId] = vals;
+    return vals;
+  } catch(e) { dictionaryCache[defId] = []; return []; }
+}
+
 // ─── ANALYZE FIXES ───────────────────────────────────────────────────
 async function analyzeFixes() {
   if (!selectedCatId || !scanData) return;
-  const cat = scanData.categories[selectedCatId];
-  if (!cat) return;
+  const cat = scanData.categories[selectedCatId]; if (!cat) return;
 
   const btn = document.getElementById('analyzeBtn');
   btn.disabled = true; btn.textContent = '🔍 Analyzing…';
   const fixesBody = document.getElementById('fixesBody');
-  fixesBody.innerHTML = '<div style="text-align:center;padding:16px;color:var(--text3)"><span class="spinner"></span> Sampling products to find fixable patterns…</div>';
+  fixesBody.innerHTML = '<div style="text-align:center;padding:16px;color:var(--text3)"><span class="spinner"></span> Sampling clean products to infer values…</div>';
 
   const fixes = [];
-
   try {
     const breakdowns = Object.values(cat.attrBreakdown).sort((a,b)=>b.count-a.count);
 
-    for (const b of breakdowns) {
-      const fix = { attrName: b.attrName, defId: b.defId, kind: b.kind, vtype: b.vtype, count: b.count, productIds: [...new Set(b.productIds)], autoFixable: false, suggestedValue: null, suggestedLabel: null, status: 'pending' };
+    // Only MISSING errors are fillable. INVALID = format/range → always manual.
+    const missing = breakdowns.filter(b => b.vtype === 'MISSING_CATEGORY_VALUE' || b.vtype.startsWith('MISSING'));
+    const invalid = breakdowns.filter(b => !(b.vtype === 'MISSING_CATEGORY_VALUE' || b.vtype.startsWith('MISSING')));
 
-      if (b.vtype === 'MISSING_CATEGORY_VALUE') {
-        // Find a product in this category that does NOT have this issue
-        const affectedSet = new Set(b.productIds);
-        const cleanProduct = cat.products.find(p => !affectedSet.has(p.id));
+    // Sample clean products once (products in this cat NOT in the affected set of ANY missing attr).
+    // For value inference we fetch up to N clean products per attribute.
+    const SAMPLE = 12;
 
-        if (cleanProduct) {
-          try {
-            const prod = await mcpCall('get_product', { productId: cleanProduct.id, productName: cleanProduct.name });
-            // Find attribute value by definitionId
-            const attrs = prod.attributes || prod.attributeValues || {};
-            const val = attrs[b.defId];
-            if (val !== undefined && val !== null && val !== '') {
-              const displayVal = Array.isArray(val) ? val.join(', ') : String(val);
-              fix.autoFixable = true;
-              fix.suggestedValue = Array.isArray(val) ? val : [String(val)];
-              fix.suggestedLabel = displayVal;
-            }
-          } catch(e) { console.warn('Could not sample product for', b.attrName, e); }
-        }
+    for (const b of missing) {
+      const affected = new Set(b.productIds);
+      const cleanCandidates = cat.products.filter(p => !affected.has(p.id)).slice(0, SAMPLE);
 
-        if (!fix.autoFixable) {
-          // Check if we can get the attribute definition for guidance
-          try {
-            const def = await mcpCall('get_attribute_definition', { definitionId: b.defId, attributeName: b.attrName });
-            fix.attrType = def.dataType || 'unknown';
-            if (def.enumValues?.length) {
-              fix.enumOptions = def.enumValues.slice(0, 10).map(v => ({ id: v.id || v.value, label: v.value || v.label }));
-            }
-          } catch(e) { console.warn('Could not get def for', b.attrName, e); }
-        }
+      const fix = { attrName:b.attrName, defId:b.defId, kind:b.kind, vtype:b.vtype, count:b.count, productIds:[...new Set(b.productIds)], tier:'manual', status:'pending', valueDist:{}, valueKind:null, options:null, chosen:null };
+
+      // Gather values from clean products
+      const dist = {}; let valueKind = null;
+      for (const cp of cleanCandidates) {
+        try {
+          const prod = await mcpCall('get_product', { productId: cp.id, productName: cp.name });
+          const v = attrValueFor(prod, b.defId);
+          if (v) {
+            valueKind = v.kind;
+            const key = JSON.stringify(v.raw);
+            dist[key] = (dist[key]||0)+1;
+          }
+        } catch(e) { /* skip */ }
       }
 
+      fix.valueKind = valueKind;
+      const distEntries = Object.entries(dist).sort((a,b)=>b[1]-a[1]);
+      const sampled = distEntries.reduce((s,[,n])=>s+n,0);
+
+      if (distEntries.length) {
+        const [topKey, topCount] = distEntries[0];
+        const share = topCount / sampled;
+        const topRaw = JSON.parse(topKey);
+
+        // Resolve display label(s)
+        let label;
+        if (valueKind === 'dictionary') {
+          const dictLabels = await getDictionaryLabels(b.defId);
+          label = topRaw.map(id => dictLabels.find(d=>d.id===id)?.label || id).join(', ');
+          fix.options = dictLabels;
+        } else {
+          label = topRaw.join(', ');
+        }
+
+        fix.suggestedRaw = topRaw;
+        fix.suggestedLabel = label;
+        fix.share = share;
+        fix.sampled = sampled;
+
+        if (share === 1 && sampled >= 3) { fix.tier = 'high'; }
+        else if (share >= 0.6) { fix.tier = 'likely'; }
+        else { fix.tier = 'manual'; fix.ambiguous = true; }
+
+        fix.distList = distEntries.slice(0,5).map(([k,n]) => ({ raw: JSON.parse(k), n }));
+      } else {
+        // No clean products had a value — offer dictionary options if any
+        if (b.kind === 'CLA' || b.kind === 'Dictionary') {
+          const dictLabels = await getDictionaryLabels(b.defId);
+          if (dictLabels.length) { fix.options = dictLabels; fix.valueKind = 'dictionary'; }
+        }
+        fix.tier = 'manual';
+      }
       fixes.push(fix);
+    }
+
+    // Invalid-value errors: always manual, but enrich with definition guidance
+    for (const b of invalid) {
+      fixes.push({ attrName:b.attrName, defId:b.defId, kind:b.kind, vtype:b.vtype, count:b.count, productIds:[...new Set(b.productIds)], tier:'manual', status:'pending', invalidFormat:true });
     }
 
     currentFixes = fixes;
     renderFixes();
-
   } catch(e) {
     toast('Analysis failed: '+e.message, true);
     fixesBody.innerHTML = '<div style="color:var(--red);padding:16px;text-align:center">Analysis failed — check console</div>';
@@ -613,108 +644,113 @@ async function analyzeFixes() {
 }
 
 function renderFixes() {
-  const body = document.getElementById('fixesBody');
-  body.innerHTML = '';
+  const body = document.getElementById('fixesBody'); body.innerHTML='';
+  const order = { high:0, likely:1, manual:2 };
+  const sorted = [...currentFixes].sort((a,b)=> (order[a.tier]-order[b.tier]) || (b.count-a.count));
 
-  const autoFixes = currentFixes.filter(f => f.autoFixable);
-  const manualFixes = currentFixes.filter(f => !f.autoFixable);
+  const confidentCount = currentFixes.filter(f => (f.tier==='high'||f.tier==='likely') && f.status==='pending').length;
+  const highN = currentFixes.filter(f=>f.tier==='high').length;
+  const likelyN = currentFixes.filter(f=>f.tier==='likely').length;
+  const manualN = currentFixes.filter(f=>f.tier==='manual').length;
+  document.getElementById('fixesSub').textContent = `${highN} high-confidence · ${likelyN} likely · ${manualN} manual`;
+  document.getElementById('execAllBtn').classList.toggle('hidden', confidentCount === 0);
 
-  if (autoFixes.length) {
-    document.getElementById('execAllBtn').classList.remove('hidden');
-  }
-
-  for (const fix of [...autoFixes, ...manualFixes]) {
+  for (const fix of sorted) {
     const card = document.createElement('div');
-    card.className = 'fix-card';
+    card.className = `fix-card tier-${fix.tier}`;
     card.id = `fix-${fix.defId}-${fix.vtype}`;
 
-    const statusHtml = fix.status === 'done' ? '<span class="done">✓ Applied</span>'
-      : fix.status === 'running' ? '<span class="spinner"></span> Applying…'
-      : fix.status === 'failed' ? '<span class="fail">✗ Failed</span>'
-      : '';
+    const prog = fix.status==='done' ? `<div class="fix-prog"><span class="done">✓ ${fix.resultMsg||'Applied'}</span></div>`
+      : fix.status==='running' ? `<div class="fix-prog"><span class="spinner"></span> Applying…</div>`
+      : fix.status==='failed' ? `<div class="fix-prog"><span class="fail">✗ ${fix.resultMsg||'Failed'}</span></div>` : '';
 
-    if (fix.autoFixable) {
+    if (fix.tier === 'high' || fix.tier === 'likely') {
+      const icon = fix.tier==='high' ? 'high' : 'likely';
+      const confClass = fix.tier==='high' ? 'conf-high' : 'conf-likely';
+      const confText = fix.tier==='high' ? `Every sampled product = same value` : `${Math.round(fix.share*100)}% of sampled products`;
       card.innerHTML = `
-        <div class="fix-icon auto">⚡</div>
+        <div class="fix-icon ${icon}">${fix.tier==='high'?'✓':'≈'}</div>
         <div class="fix-body">
-          <div class="fix-title">Set <span class="attr-code">${fix.attrName}</span> → ${fix.suggestedLabel}</div>
-          <div class="fix-desc">Missing on ${fix.count} product${fix.count>1?'s':''} · Value inferred from clean products in this category</div>
-          <div class="fix-meta">${fix.kind} · ${fix.vtype.replace(/_/g,' ').toLowerCase()}</div>
-          <div class="fix-progress" id="fixprog-${fix.defId}">${statusHtml}</div>
+          <div class="fix-title">Set <span class="attr-code">${fix.attrName}</span> → <span class="fix-val">${fix.suggestedLabel}</span></div>
+          <div class="fix-desc">Missing on ${fix.count} product${fix.count>1?'s':''} in this category</div>
+          <div class="fix-meta"><span class="conf-pill ${confClass}">${fix.tier==='high'?'High confidence':'Likely'}</span> ${confText} (n=${fix.sampled}) · ${fix.kind}</div>
+          ${prog}
         </div>
         <div class="fix-actions">
-          <button class="btn btn-sm btn-primary" onclick="executeSingleFix('${fix.defId}','${fix.vtype}')" ${fix.status!=='pending'?'disabled':''}>▶ Fix</button>
+          ${fix.options ? renderOverrideSelect(fix) : ''}
+          <button class="btn btn-sm btn-primary" onclick="executeSingleFix('${fix.defId}','${fix.vtype}')" ${fix.status!=='pending'?'disabled':''}>▶ Fix ${fix.count}</button>
         </div>`;
     } else {
-      let hint = 'Needs manual review — could not infer a value automatically.';
-      if (fix.enumOptions?.length) {
-        hint = `Select attribute with ${fix.enumOptions.length} options: ${fix.enumOptions.slice(0,5).map(o=>o.label).join(', ')}${fix.enumOptions.length>5?'…':''}`;
-      } else if (fix.vtype === 'INVALID_ATTRIBUTE_VALUE') {
-        hint = 'Current values fail format or range restrictions. Review in Bluestone PIM with the fix-it column setup.';
-      }
+      // Manual — but if we have dictionary options, let them pick and still fix
+      let descText;
+      if (fix.invalidFormat) descText = 'Values fail a format or range rule — needs human judgment. Use the fix-it column setup to review in Bluestone PIM.';
+      else if (fix.ambiguous) descText = `Clean products disagree on the value (top choice only ${Math.round(fix.share*100)}%). Pick one to apply, or review manually.`;
+      else if (fix.options) descText = 'No clean product had a value to copy. Pick from the allowed values to fill all affected products.';
+      else descText = 'Could not infer a value and no picklist available — review in Bluestone PIM.';
+
       card.innerHTML = `
         <div class="fix-icon manual">⚠</div>
         <div class="fix-body">
           <div class="fix-title"><span class="attr-code">${fix.attrName}</span></div>
-          <div class="fix-desc">${fix.count} product${fix.count>1?'s':''} affected · ${hint}</div>
-          <div class="fix-meta">${fix.kind} · ${fix.vtype.replace(/_/g,' ').toLowerCase()}</div>
+          <div class="fix-desc">${descText}</div>
+          <div class="fix-meta">${fix.count} product${fix.count>1?'s':''} · ${fix.kind} · ${fix.vtype.replace(/_/g,' ').toLowerCase()}</div>
+          ${prog}
         </div>
-        <div class="fix-actions"><span style="font-size:11px;color:var(--text3)">Manual</span></div>`;
+        <div class="fix-actions">
+          ${fix.options && !fix.invalidFormat ? renderOverrideSelect(fix) + `<button class="btn btn-sm" onclick="executeSingleFix('${fix.defId}','${fix.vtype}')" ${fix.status!=='pending'?'disabled':''}>▶ Fill ${fix.count}</button>` : '<span style="font-size:11px;color:var(--text3)">Manual</span>'}
+        </div>`;
     }
     body.appendChild(card);
   }
-
-  document.getElementById('fixesSub').textContent = `${autoFixes.length} auto-fixable · ${manualFixes.length} need review`;
 }
 
-// ─── EXECUTE FIXES ───────────────────────────────────────────────────
+function renderOverrideSelect(fix) {
+  const opts = fix.options.map(o => {
+    const isChosen = fix.chosen ? JSON.stringify(fix.chosen)===JSON.stringify([o.id]) : (fix.suggestedRaw && JSON.stringify(fix.suggestedRaw)===JSON.stringify([o.id]));
+    return `<option value="${o.id}" ${isChosen?'selected':''}>${o.label}</option>`;
+  }).join('');
+  return `<select class="fix-select" onchange="setFixChoice('${fix.defId}','${fix.vtype}', this.value)"><option value="">— pick value —</option>${opts}</select>`;
+}
+function setFixChoice(defId, vtype, valId) {
+  const fix = currentFixes.find(f=>f.defId===defId && f.vtype===vtype);
+  if (!fix) return;
+  fix.chosen = valId ? [valId] : null;
+}
+
+// ─── EXECUTE ─────────────────────────────────────────────────────────
 async function executeSingleFix(defId, vtype) {
-  const fix = currentFixes.find(f => f.defId === defId && f.vtype === vtype);
-  if (!fix || !fix.autoFixable || fix.status !== 'pending') return;
+  const fix = currentFixes.find(f=>f.defId===defId && f.vtype===vtype);
+  if (!fix || fix.status!=='pending') return;
   await applyFix(fix);
+  renderFixes();
 }
-
 async function executeAllFixes() {
-  const auto = currentFixes.filter(f => f.autoFixable && f.status === 'pending');
-  if (!auto.length) { toast('No pending auto-fixes', true); return; }
-
-  const btn = document.getElementById('execAllBtn');
-  btn.disabled = true; btn.textContent = '▶ Running…';
-
-  for (const fix of auto) {
-    await applyFix(fix);
-  }
-
-  btn.textContent = '▶ Done'; toast(`Applied fixes to ${auto.length} error patterns ✓`);
+  const confident = currentFixes.filter(f => (f.tier==='high'||f.tier==='likely') && f.status==='pending');
+  if (!confident.length) { toast('No confident fixes to apply', true); return; }
+  const btn = document.getElementById('execAllBtn'); btn.disabled = true; btn.textContent='▶ Running…';
+  let ok=0;
+  for (const fix of confident) { await applyFix(fix); if (fix.status==='done') ok++; renderFixes(); }
+  btn.disabled=false; btn.textContent='▶ Apply all confident fixes';
+  toast(`Applied ${ok}/${confident.length} fix groups ✓`);
 }
 
 async function applyFix(fix) {
-  fix.status = 'running'; renderFixes();
-  let success = 0, fail = 0;
-
+  const raw = fix.chosen || fix.suggestedRaw;
+  if (!raw) { toast(`Pick a value for ${fix.attrName} first`, true); return; }
+  fix.status='running'; renderFixes();
+  let success=0, fail=0;
+  const cat = scanData.categories[selectedCatId];
   for (const pid of fix.productIds) {
     try {
-      const prodName = scanData.categories[selectedCatId]?.products?.find(p=>p.id===pid)?.name || '';
-      await mcpCall('set_product_attribute', {
-        definitionId: fix.defId,
-        productId: pid,
-        values: fix.suggestedValue,
-        attributeName: fix.attrName,
-        productName: prodName
-      });
+      const prodName = cat?.products?.find(p=>p.id===pid)?.name || '';
+      const args = { definitionId: fix.defId, productId: pid, attributeName: fix.attrName, productName: prodName };
+      if (fix.valueKind === 'dictionary') args.dictionaryValueIds = raw; else args.values = raw.map(String);
+      await mcpCall('set_product_attribute', args);
       success++;
-    } catch(e) {
-      console.warn('Fix failed for', pid, e); fail++;
-    }
+    } catch(e) { console.warn('fix failed', pid, e); fail++; }
   }
-
-  fix.status = fail === 0 ? 'done' : (success > 0 ? 'done' : 'failed');
-  fix.resultMsg = `${success} fixed${fail ? ', '+fail+' failed' : ''}`;
-  renderFixes();
-
-  // Update progress display
-  const progEl = document.getElementById(`fixprog-${fix.defId}`);
-  if (progEl) progEl.innerHTML = `<span class="${fix.status==='done'?'done':'fail'}">${fix.resultMsg}</span>`;
+  fix.status = success>0 ? 'done' : 'failed';
+  fix.resultMsg = `${success} fixed${fail?`, ${fail} failed`:''}`;
 }
 
 // ─── COLUMN SETUP ────────────────────────────────────────────────────
@@ -723,24 +759,25 @@ async function proposeColumnSetup() {
   const defIds = JSON.parse(panel.dataset.defIds||'[]');
   const catName = panel.dataset.catName||'Unknown';
   const cfg = loadCfg();
-  if (!defIds.length) { toast('No failing attributes to include',true); return; }
-  if (!cfg.ownerEmail) { toast('Set owner email in Settings first',true); openSettings(); return; }
-
-  const btn = document.getElementById('ctaBtn');
-  btn.disabled = true; btn.textContent = '⊞ Proposing…';
+  if (!defIds.length) { toast('No failing attributes',true); return; }
+  if (!cfg.ownerEmail) { toast('Set owner email in Settings',true); openSettings(); return; }
+  const btn = document.getElementById('ctaBtn'); btn.disabled=true; btn.textContent='⊞ Proposing…';
   try {
     const proposal = await mcpCall('propose_column_setup', { source:'attributes', definitionIds:defIds, proposedSetupName:`Fix-it: ${catName}`, additionalStandardColumns:['number','producttype'] });
     const columns = proposal?.createRequest?.columns || proposal?.columns;
-    if (!columns) { toast('Could not generate column proposal',true); console.warn(proposal); return; }
-    btn.textContent = '⊞ Creating…';
+    if (!columns) { toast('Could not generate proposal',true); return; }
+    btn.textContent='⊞ Creating…';
     await mcpCall('create_column_setup', { name:`Fix-it: ${catName}`, owner:cfg.ownerEmail, isPublic:true, columns });
     toast(`Column setup "Fix-it: ${catName}" created ✓`);
   } catch(e) { toast('Column setup failed: '+e.message,true); }
-  finally { btn.disabled = false; btn.textContent = '⊞ Create fix-it column setup'; }
+  finally { btn.disabled=false; btn.textContent='⊞ Create fix-it column setup'; }
 }
 
 // ─── Init ────────────────────────────────────────────────────────────
-(function init() { if (!loadCfg().workerUrl) setTimeout(openSettings, 400); })();
+(function init() {
+  if (!loadCfg().workerUrl) setTimeout(openSettings, 400);
+  else loadCatalogs();
+})();
 </script>
 </body>
 </html>
